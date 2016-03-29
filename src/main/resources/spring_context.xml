@@ -16,9 +16,9 @@
         <context:component-scan base-package="ua.internetshop.dao.impl" />
         <context:component-scan base-package="ua.internetshop.service.impl" />
         -->
-    <!--  <jpa:repositories base-package="ua.internetshop.repository" />
+     <jpa:repositories base-package="com.galprom.repository" />
 
-      <context:component-scan base-package="ua.internetshop.validator" />
+   <!--   <context:component-scan base-package="ua.internetshop.validator" />
 
       <bean id="shoppingCart" class="ua.internetshop.model.ShoppingCart" />
       <bean id="customer" class="ua.internetshop.model.Customer" />-->

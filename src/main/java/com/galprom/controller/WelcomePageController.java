@@ -1,8 +1,15 @@
 package com.galprom.controller;
 
+import com.galprom.model.Category;
+import com.galprom.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by Badion on 28.03.2016.
@@ -11,8 +18,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WelcomePageController {
 
-    @RequestMapping("/welcome")
-    public ModelAndView helloWorld() {
-        return new ModelAndView("welcome");
+    private static final String CATEGORY = "category";
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView printWelcome(ModelAndView model) {
+        List<Category> categories = (List<Category>) categoryRepository
+                .findAll();
+        model.addObject(CATEGORY, categories);
+        System.out.println(categories);
+        model.setViewName("categories");
+        return model;
+
     }
 }

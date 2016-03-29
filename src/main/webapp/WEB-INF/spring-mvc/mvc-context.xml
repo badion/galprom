@@ -10,11 +10,9 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <context:component-scan base-package="com.galprom.controller"></context:component-scan>
-  <!--  <context:component-scan base-package="ua.internetshop.rest.controller"></context:component-scan>-->
- <!--   <mvc:annotation-driven />
+    <mvc:annotation-driven />
 
     <mvc:resources location="/resources/" mapping="/static/**" />
-
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -24,17 +22,9 @@
             <value>.jsp</value>
         </property>
     </bean>
-
     <bean class="org.springframework.context.support.ResourceBundleMessageSource"
           id="messageSource">
         <property name="basename" value="messages" />
-    </bean>-->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
     </bean>
 
 </beans>
