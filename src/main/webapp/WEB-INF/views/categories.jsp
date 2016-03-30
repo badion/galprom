@@ -20,16 +20,10 @@
 						<header>
 							<h4>${categ.name}</h4>
 						</header>
-						<p class="subtitle">дадададад </p>
+						<p class="subtitle">${categ.subtitle} </p>
 						<p>
-							<a href="#"><img class="responsive-img"
-								src="<c:url value="" />" alt=""></a>
+							<a href="#"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 						</p>
-						<a href="#"
-							class="waves-effect waves-green btn-flat">More</a> 
-						<a class="waves-effect waves-red btn-flat"
-							href="#"
-							data-target="modal1">Remove</a>
 				</div>
 				</c:forEach>
 		</div>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="galprom:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="galprom.war">
+      <element id="artifact" artifact-name="galprom:war exploded" />
+    </root>
+  </artifact>
+</component>
