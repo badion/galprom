@@ -1,17 +1,10 @@
 package com.galprom.model;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 @Entity
@@ -34,20 +27,18 @@ public class Category implements Serializable {
     @Column(name = "imgFN", columnDefinition = "varchar")
     private String imgFN;
 
-
-/*
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<Good> goods;
+	private List<Good> goodList;
 
 	@JsonManagedReference
 	public List<Good> getGoods() {
-		return goods;
+		return goodList;
 	}
 
-	public void setGoods(List<Good> goods) {
-		this.goods = goods;
-	}
-*/
+	public void setGoods(List<Good> goodList) {
+		this.goodList = goodList;}
+
+
 
     public Long getId() {
         return id;
@@ -83,11 +74,11 @@ public class Category implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Category other = (Category) obj;
-//		if (goods == null) {
-//			if (other.goods != null)
-//				return false;
-//		} else if (!goods.equals(other.goods))
-//			return false;
+		if (goodList == null) {
+			if (other.goodList != null)
+				return false;
+		} else if (!goodList.equals(other.goodList))
+			return false;
         if (id == null) {
             if (other.id != null)
                 return false;
@@ -103,7 +94,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "Category [id=" + id + ", name=" + name + ", goods=" + "]";
+        return "Category [id=" + id + ", name=" + name + ", goods=" + goodList+"]";
     }
 
     public String getSubtitle() {
