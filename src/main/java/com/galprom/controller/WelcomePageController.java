@@ -10,14 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-/**
- * Created by Badion on 28.03.2016.
- */
-
 @Controller
 public class WelcomePageController {
 
     private static final String CATEGORY = "category";
+
     @Autowired
     private CategoryRepository categoryRepository;
 

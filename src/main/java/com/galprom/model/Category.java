@@ -27,19 +27,6 @@ public class Category implements Serializable {
     @Column(name = "imgFN", columnDefinition = "varchar")
     private String imgFN;
 
-//    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, orphanRemoval = true)
-//	private List<Good> goodList;
-//
-//	@JsonManagedReference
-//	public List<Good> getGoods() {
-//		return goodList;
-//	}
-//
-//	public void setGoods(List<Good> goodList) {
-//		this.goodList = goodList;}
-
-
-
     public Long getId() {
         return id;
     }
@@ -74,11 +61,6 @@ public class Category implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         Category other = (Category) obj;
-//		if (goodList == null) {
-//			if (other.goodList != null)
-//				return false;
-//		} else if (!goodList.equals(other.goodList))
-//			return false;
         if (id == null) {
             if (other.id != null)
                 return false;
