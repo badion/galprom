@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "category_of_products")
+@Table(name = "categories")
 public class Category implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,19 +29,61 @@ public class Category implements Serializable {
 	@Column(name = "name")
 	private String name;
 
-/*
-	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, orphanRemoval = true)
-	private List<Good> goods;
+	@Column(name = "subtitle")
+	private String subtitle;
 
-	@JsonManagedReference
-	public List<Good> getGoods() {
-		return goods;
+	@Column(name = "imgFN")
+	private String imgFN;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Category category = (Category) o;
+
+		if (id != null ? !id.equals(category.id) : category.id != null) return false;
+		if (name != null ? !name.equals(category.name) : category.name != null) return false;
+		if (subtitle != null ? !subtitle.equals(category.subtitle) : category.subtitle != null) return false;
+		return imgFN != null ? imgFN.equals(category.imgFN) : category.imgFN == null;
+
 	}
 
-	public void setGoods(List<Good> goods) {
-		this.goods = goods;
+	@Override
+	public int hashCode() {
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (subtitle != null ? subtitle.hashCode() : 0);
+		result = 31 * result + (imgFN != null ? imgFN.hashCode() : 0);
+		return result;
 	}
-*/
+
+	@Override
+	public String toString() {
+		return "Category{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", subtitle='" + subtitle + '\'' +
+				", imgFN='" + imgFN + '\'' +
+				'}';
+	}
+
+
+	public String getImgFN() {
+		return imgFN;
+	}
+
+	public void setImgFN(String imgFN) {
+		this.imgFN = imgFN;
+	}
+
+	public String getSubtitle() {
+		return subtitle;
+	}
+
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
+	}
 
 	public Long getId() {
 		return id;
@@ -59,46 +101,6 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-//		result = prime * result + ((goods == null) ? 0 : goods.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Category other = (Category) obj;
-//		if (goods == null) {
-//			if (other.goods != null)
-//				return false;
-//		} else if (!goods.equals(other.goods))
-//			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", goods=" + "]";
-	}
 
 }

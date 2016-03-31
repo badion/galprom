@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"
-	prefix="springForm"%>
+		   prefix="springForm"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <t:genericpage>
 	<jsp:attribute name="header">
@@ -13,31 +13,25 @@
   	 	<jsp:include page="../parts/footer.jsp" />
     </jsp:attribute>
 	<jsp:body>
-	<div class="container">
-		<div class="row">
-			<c:forEach var="categ" items="${category}">
-				<div class="col m6 l4">
+		<div class="container">
+			<div class="row">
+				<c:forEach var="categ" items="${category}">
+					<div class="col m6 l4">
 						<header>
 							<h4>${categ.name}</h4>
 						</header>
-						<p class="subtitle">дадададад </p>
+						<p class="subtitle">${categ.subtitle} </p>
 						<p>
-							<a href="#"><img class="responsive-img"
-								src="<c:url value="" />" alt=""></a>
+							<a href="#"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 						</p>
-						<a href="#"
-							class="waves-effect waves-green btn-flat">More</a> 
-						<a class="waves-effect waves-red btn-flat"
-							href="#"
-							data-target="modal1">Remove</a>
-				</div>
+					</div>
 				</c:forEach>
+			</div>
 		</div>
-		</div>
-<%--		<div class="center-btn">
-		 <a href="<c:url value='/categories/add'/>"
-					  class="btn-floating btn-large waves-effect waves-light red"><i
-			class="material-icons">add</i></a>
-		</div>--%>
-    </jsp:body>
+		<%--		<div class="center-btn">
+                 <a href="<c:url value='/categories/add'/>"
+                              class="btn-floating btn-large waves-effect waves-light red"><i
+                    class="material-icons">add</i></a>
+                </div>--%>
+	</jsp:body>
 </t:genericpage>
