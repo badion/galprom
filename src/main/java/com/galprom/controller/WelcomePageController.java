@@ -4,7 +4,6 @@ import com.galprom.model.Category;
 import com.galprom.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,8 +24,7 @@ public class WelcomePageController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView printWelcome(ModelAndView model) {
-        List<Category> categories = (List<Category>) categoryRepository
-                .findAll();
+        List<Category> categories = categoryRepository.findAll();
         model.addObject(CATEGORY, categories);
         System.out.println(categories);
         model.setViewName("categories");
