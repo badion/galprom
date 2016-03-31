@@ -15,7 +15,7 @@ public class Greed implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
     private String name;
 
     @Column(name = "cell_w")

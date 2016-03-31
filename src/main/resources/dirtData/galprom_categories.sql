@@ -1,0 +1,3 @@
+INSERT INTO galprom.categories (id, name, subtitle, imgFN) VALUES (1, 'Реставрація', 'професійне відновлення деталей вашого автомобіля', 'restauration.jpg');
+INSERT INTO galprom.categories (id, name, subtitle, imgFN) VALUES (2, 'Сітка Рабиця', 'плетена із сталевого дроту круглого перерізу', 'rabiza.jpg');
+INSERT INTO galprom.categories (id, name, subtitle, imgFN) VALUES (3, 'Торсіони', 'широкий вибір', 'torsioni.jpg');

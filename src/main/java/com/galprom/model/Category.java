@@ -14,10 +14,10 @@ public class Category implements Serializable {
 	@Column(name = "id", columnDefinition = "bigint")
 	private Long id;
 
-	@Column(name = "name")
+	@Column(name = "name",columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
 	private String name;
 
-	@Column(name = "subtitle")
+	@Column(name = "subtitle",columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
 	private String subtitle;
 
 	@Column(name = "imgFN")
