@@ -22,7 +22,16 @@
 						</header>
 						<p class="subtitle">${categ.subtitle} </p>
 						<p>
-							<a href="#"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+							<c:set var="categoryName" value="${categ.name}"/>
+							<c:if test="${fn:contains(categoryName, 'Сітка')}">
+								<a href="categories/grid"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+							</c:if>
+							<c:if test="${fn:contains(categoryName, 'Реставрація')}">
+								<a href="categories/restavraciya"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+							</c:if><c:if test="${fn:contains(categoryName, 'Торсіони')}">
+								<a href="categories/torsiony"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+							</c:if>
+
 						</p>
 					</div>
 				</c:forEach>

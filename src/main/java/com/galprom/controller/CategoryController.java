@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Controller
-public class WelcomePageController {
+public class CategoryController {
 
     private static final String CATEGORY = "category";
 
@@ -23,12 +23,11 @@ public class WelcomePageController {
     private CategoryRepository categoryRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView printWelcome(ModelAndView model) {
+    public ModelAndView getAllCategories(ModelAndView model) {
         List<Category> categories = categoryRepository.findAll();
         model.addObject(CATEGORY, categories);
-        System.out.println(categories);
         model.setViewName("categories");
         return model;
-
     }
+
 }

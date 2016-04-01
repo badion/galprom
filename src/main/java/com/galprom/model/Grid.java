@@ -5,8 +5,8 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "greed")
-public class Greed implements Serializable {
+@Table(name = "grid")
+public class Grid implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,6 +35,18 @@ public class Greed implements Serializable {
 
     @Column(name = "price")
     private Double price;//UAH
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -101,34 +113,21 @@ public class Greed implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Greed{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", cell_w=" + cell_w +
-                ", cell_h=" + cell_h +
-                ", diametr=" + diametr +
-                ", roll_length=" + roll_length +
-                ", roll_width=" + roll_width +
-                ", price=" + price +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Greed greed = (Greed) o;
+        Grid grid = (Grid) o;
 
-        if (id != null ? !id.equals(greed.id) : greed.id != null) return false;
-        if (name != null ? !name.equals(greed.name) : greed.name != null) return false;
-        if (cell_w != null ? !cell_w.equals(greed.cell_w) : greed.cell_w != null) return false;
-        if (cell_h != null ? !cell_h.equals(greed.cell_h) : greed.cell_h != null) return false;
-        if (diametr != null ? !diametr.equals(greed.diametr) : greed.diametr != null) return false;
-        if (roll_length != null ? !roll_length.equals(greed.roll_length) : greed.roll_length != null) return false;
-        if (roll_width != null ? !roll_width.equals(greed.roll_width) : greed.roll_width != null) return false;
-        return price != null ? price.equals(greed.price) : greed.price == null;
+        if (id != null ? !id.equals(grid.id) : grid.id != null) return false;
+        if (name != null ? !name.equals(grid.name) : grid.name != null) return false;
+        if (cell_w != null ? !cell_w.equals(grid.cell_w) : grid.cell_w != null) return false;
+        if (cell_h != null ? !cell_h.equals(grid.cell_h) : grid.cell_h != null) return false;
+        if (diametr != null ? !diametr.equals(grid.diametr) : grid.diametr != null) return false;
+        if (roll_length != null ? !roll_length.equals(grid.roll_length) : grid.roll_length != null) return false;
+        if (roll_width != null ? !roll_width.equals(grid.roll_width) : grid.roll_width != null) return false;
+        if (price != null ? !price.equals(grid.price) : grid.price != null) return false;
+        return category != null ? category.equals(grid.category) : grid.category == null;
 
     }
 
@@ -142,6 +141,23 @@ public class Greed implements Serializable {
         result = 31 * result + (roll_length != null ? roll_length.hashCode() : 0);
         result = 31 * result + (roll_width != null ? roll_width.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Grid{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cell_w=" + cell_w +
+                ", cell_h=" + cell_h +
+                ", diametr=" + diametr +
+                ", roll_length=" + roll_length +
+                ", roll_width=" + roll_width +
+                ", price=" + price +
+                ", category=" + category +
+                '}';
+    }
+
 }
