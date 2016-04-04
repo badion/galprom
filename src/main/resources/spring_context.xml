@@ -12,16 +12,10 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <!--
-        <context:component-scan base-package="ua.internetshop.dao.impl" />
-        <context:component-scan base-package="ua.internetshop.service.impl" />
-        -->
-     <jpa:repositories base-package="com.galprom.repository" />
 
-   <!--   <context:component-scan base-package="ua.internetshop.validator" />
+    <jpa:repositories base-package="com.galprom.repository"/>
 
-      <bean id="shoppingCart" class="ua.internetshop.model.ShoppingCart" />
-      <bean id="customer" class="ua.internetshop.model.Customer" />-->
+    <context:component-scan base-package="com.galprom.validator"/>
 
     <tx:annotation-driven/>
 </beans>
