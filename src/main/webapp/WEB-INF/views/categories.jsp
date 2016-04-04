@@ -24,23 +24,36 @@
 						<p>
 							<c:set var="categoryName" value="${categ.name}"/>
 							<c:if test="${fn:contains(categoryName, 'Сітка')}">
-								<a href="categories/grid"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+								<a href="#grid_table"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 							</c:if>
 							<c:if test="${fn:contains(categoryName, 'Реставрація')}">
-								<a href="categories/restavraciya"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+								<a href="#restavraciya"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 							</c:if><c:if test="${fn:contains(categoryName, 'Торсіони')}">
-								<a href="categories/torsiony"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+								<a href="#torsion_table"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 							</c:if>
 
 						</p>
 					</div>
 				</c:forEach>
 			</div>
-		</div>
-		<%--		<div class="center-btn">
-                 <a href="<c:url value='/categories/add'/>"
-                              class="btn-floating btn-large waves-effect waves-light red"><i
-                    class="material-icons">add</i></a>
-                </div>--%>
+            <div class="container" name="grid_table">
+                <div class="row">
+                    <c:forEach var="grid" items="${grids}">
+                        <div class="collection">
+                            <a href="#!" class="collection-item">${grid.name}, ${grid.cell_h} / ${grid.cell_w}, ${grid.price} грн.</a>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+            <div class="container" name="torsion_table">
+                <div class="row">
+                    <c:forEach var="torsion" items="${torsions}">
+                        <div class="collection">
+                            <a href="#!" class="collection-item">${torsion.name}, лівий(${torsion.code_left}), правий(${torsion.code_right}), ${torsion.price} грн.</a>
+                        </div>
+                    </c:forEach>
+                </div>
+		    </div>
+        </div>
 	</jsp:body>
 </t:genericpage>

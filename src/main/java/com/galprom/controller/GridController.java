@@ -10,10 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-/**
- * Created by Home on 01.04.2016.
- */
-
 @Controller
 public class GridController {
 
