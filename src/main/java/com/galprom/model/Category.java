@@ -69,8 +69,7 @@ public class Category implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", subtitle='" + subtitle + '\'' +
-                ", imgFN='" + imgFN + '\'' + ", grids= " + grids +
-                '}';
+                ", imgFN='" + imgFN + '\'' +   '}';
     }
 
 

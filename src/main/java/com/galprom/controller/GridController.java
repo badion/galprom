@@ -5,6 +5,7 @@ import com.galprom.model.Grid;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
 import com.galprom.validator.GridValidator;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +38,7 @@ public class GridController {
         return model;
     }
 
-
-    @RequestMapping(value = { "/categories/newGrid" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/categories/newGrid"}, method = RequestMethod.GET)
     public String newGrid(ModelMap model) {
         Grid grid = new Grid();
         model.addAttribute("grid", grid);
@@ -46,10 +46,9 @@ public class GridController {
         return "grid_new";
     }
 
-
-    @RequestMapping(value = { "/categories/newGrid" }, method = RequestMethod.POST)
+    @RequestMapping(value = {"/categories/newGrid"}, method = RequestMethod.POST)
     public String newGridAction(@Valid Grid grid, BindingResult result,
-                           ModelMap model) {
+                                ModelMap model) {
         gridValidator.validate(grid, result);
         if (result.hasErrors()) {
             return "grid_new";
@@ -57,5 +56,15 @@ public class GridController {
         gridRepository.save(grid);
         model.addAttribute("success", "Сітка " + grid.getName() + " " + " додана успішно");
         return "grid_new_succesful";
+    }
+
+    @RequestMapping(value = "/categories/grid/{id}", method = RequestMethod.POST)
+    public String deleteGrid(@PathVariable("id") Long id) {
+        Grid grid = gridRepository.findOne(id);
+        if (grid != null) {
+            Hibernate.initialize(grid);
+            gridRepository.delete(grid);
+        }
+        return "redirect:/categories/grid";
     }
 }

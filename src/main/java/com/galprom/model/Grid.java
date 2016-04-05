@@ -153,7 +153,7 @@ public class Grid implements Serializable {
 
     @Override
     public String toString() {
-        return "Grid{" +
+            return "Grid{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", cell_w=" + cell_w +
@@ -162,7 +162,6 @@ public class Grid implements Serializable {
                 ", roll_length=" + roll_length +
                 ", roll_width=" + roll_width +
                 ", price=" + price +
-                ", category=" + category +
                 '}';
     }
 
