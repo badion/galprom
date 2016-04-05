@@ -14,13 +14,11 @@
   	 	<jsp:include page="../parts/footer.jsp"/>
     </jsp:attribute>
     <jsp:body>
-
         <div class="container">
             <h4>Форма для додавання сітки</h4>
             <div class="row">
                 <form:form method="POST" modelAttribute="grid" class="col s12">
                     <form:input type="hidden" path="id" id="id"/>
-
                     <!-- Назва -->
                     <div class="row">
                         <div class="input-field col s6">

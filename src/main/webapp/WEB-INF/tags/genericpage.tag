@@ -28,7 +28,6 @@
 	<div id="body">
 		<script>
 			$(document).ready(function() {
-
 				$('.modal-trigger').leanModal();
 				$(".button-collapse").sideNav();
 				$('.pagination li a').each(function(index) {

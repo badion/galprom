@@ -26,9 +26,13 @@
                         <p>Висота/Ширина ячейки: ${grid.cell_h}
                             / ${grid.cell_w}<br>
                             Ціна: ${grid.price}
+                            <a style="margin-top: 30px;" href="<c:url value='/categories/grid/edit/${grid.id}'/>"
+                               class="secondary-content"><i class="material-icons">mode_edit</i></a>
                         </p>
+
                         <a href="#modal${grid.id}" class="secondary-content modal-trigger"><i class="material-icons">delete</i></a>
-                            <%--<a class="waves-effect waves-light btn modal-trigger" href="#modal${grid.id}">Modal</a>--%>
+
+
                         <div id="modal${grid.id}" class="modal bottom-sheet">
                             <div class="modal-content">
                                 <h4>Видалення сітки</h4>
