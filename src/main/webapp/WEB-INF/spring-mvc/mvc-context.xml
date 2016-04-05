@@ -24,7 +24,9 @@
     </bean>
     <bean class="org.springframework.context.support.ResourceBundleMessageSource"
           id="messageSource">
+        <property name="defaultEncoding" value="UTF-8"/>
         <property name="basename" value="messages" />
     </bean>
+
 
 </beans>
