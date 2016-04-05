@@ -16,15 +16,19 @@
     </jsp:attribute>
     <jsp:body>
         <div class="container">
-            <div class="row">
-                <c:forEach var="grid" items="${grids}">
-                    <div class="collection">
-                        <a href="#!" class="collection-item">${grid.name}, ${grid.cell_h}
-                            / ${grid.cell_w}, ${grid.price}
-                            грн.</a>
-                        <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal${grid.id}">Modal</a>
-                        <!-- Modal Structure -->
+            <h4>Список сіток:</h4>
+            <c:forEach var="grid" items="${grids}">
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                            <%--<img src="images/yuna.jpg" alt="" class="circle">--%>
+                        <i class="material-icons circle green">insert_chart</i>
+                        <span class="title">${grid.name}</span>
+                        <p>Висота/Ширина ячейки: ${grid.cell_h}
+                            / ${grid.cell_w}<br>
+                            Ціна: ${grid.price}
+                        </p>
+                        <a href="#modal${grid.id}" class="secondary-content modal-trigger"><i class="material-icons">delete</i></a>
+                            <%--<a class="waves-effect waves-light btn modal-trigger" href="#modal${grid.id}">Modal</a>--%>
                         <div id="modal${grid.id}" class="modal bottom-sheet">
                             <div class="modal-content">
                                 <h4>Видалення сітки</h4>
@@ -38,10 +42,10 @@
                                 </form:form>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-                <a href="<c:url value='/categories/newGrid' />">Додати нову сітку</a>
-            </div>
+                    </li>
+                </ul>
+            </c:forEach>
+            <a href="<c:url value='/categories/newGrid' />">Додати нову сітку</a>
         </div>
     </jsp:body>
 </t:genericpage>
