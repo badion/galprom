@@ -49,6 +49,16 @@
                     </li>
                 </ul>
             </c:forEach>
+            <ul class="pagination">
+                <li class="waves-effect"><a onclick="decriment_page();"><i
+                        class="material-icons">chevron_left</i></a></li>
+                <c:forEach var="i" begin="1" end="${pagesAmount}">
+                    <li class="waves-effect"><a
+                            href="/galprom/categories/grid/${i}">${i}</a></li>
+                </c:forEach>
+                <li class="waves-effect"><a onclick="increment_page();"><i
+                        class="material-icons">chevron_right</i></a></li>
+            </ul>
             <a href="<c:url value='/categories/newGrid' />">Додати нову сітку</a>
         </div>
     </jsp:body>

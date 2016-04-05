@@ -6,6 +6,7 @@ import com.galprom.model.Torsion;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
 import com.galprom.repository.TorsionRepository;
+import com.galprom.service.GridServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,9 @@ public class CategoryController {
     @Autowired
     private TorsionRepository torsionRepository;
 
+    @Autowired
+    private GridServiceImpl gridService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {
 
@@ -37,7 +41,7 @@ public class CategoryController {
         model.addObject(CATEGORY, categories);
         model.setViewName("categories");
 
-        List<Grid> grids = gridRepository.findAll();
+        List<Grid> grids = gridService.grids(1);
         model.addObject(GRID, grids);
 
         List<Torsion> torsions = torsionRepository.findAll();

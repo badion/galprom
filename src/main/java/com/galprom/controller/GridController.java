@@ -4,9 +4,11 @@ import com.galprom.model.Category;
 import com.galprom.model.Grid;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
+import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class GridController {
@@ -29,6 +32,9 @@ public class GridController {
 
     @Autowired
     private GridValidator gridValidator;
+
+    @Autowired
+    private GridServiceImpl gridService;
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
@@ -82,7 +88,22 @@ public class GridController {
             return "grid_new";
         }
         gridRepository.save(grid);
-        model.addAttribute("success");
-        return "redirect:/categories/grid";
+//        model.addAttribute("success");
+        return "redirect:/categories/grid/1";
     }
+
+    @RequestMapping(value = "/categories/grid/{pageNumber}", method = RequestMethod.GET)
+    public ModelAndView grids(@PathVariable Integer pageNumber, ModelAndView model) {
+        List<Grid> gridsPerPage = gridService.grids(pageNumber);
+        List<Grid> allGrids = gridRepository.findAll();
+
+        Double amountPages = Math.ceil((double) allGrids.size() / gridService.NUMBER_OF_GRID_PER_PAGE);
+
+        model.addObject("pagesAmount", amountPages);
+        model.addObject("aLLgrids", allGrids);
+        model.addObject("grids", gridsPerPage);
+        model.setViewName("grids");
+        return model;
+    }
+
 }

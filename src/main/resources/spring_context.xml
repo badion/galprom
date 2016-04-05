@@ -14,7 +14,7 @@
 
 
     <jpa:repositories base-package="com.galprom.repository"/>
-
+    <context:component-scan base-package="com.galprom.service"/>
     <context:component-scan base-package="com.galprom.validator"/>
 
     <tx:annotation-driven/>

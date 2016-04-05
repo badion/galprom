@@ -41,9 +41,9 @@
 				var last_element = arr[arr.length - 1];
 				var decrement = parseInt(last_element) - 1;
 				if (decrement <= 0) {
-					Materialize.toast('It is first page', 4000);
+					Materialize.toast('Це перша сторінка', 4000);
 				} else {
-					window.location.href = 'http://localhost:8080/InternetShop/categories/page/'
+					window.location.href = 'http://localhost:8080/galprom/categories/grid/'
 							+ decrement;
 				}
 			}
@@ -52,9 +52,9 @@
 				var last_element = arr[arr.length - 1];
 				var increment = parseInt(last_element) + 1;
 				if (increment > '${pagesAmount}') {
-					Materialize.toast('That was last page', 4000);
+					Materialize.toast('Це остання сторінка', 4000);
 				} else {
-					window.location.href = 'http://localhost:8080/InternetShop/categories/page/'
+					window.location.href = 'http://localhost:8080/galprom/categories/grid/'
 							+ increment;
 				}
 			}

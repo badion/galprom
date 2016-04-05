@@ -24,7 +24,7 @@
 						<p>
 							<c:set var="categoryName" value="${categ.name}"/>
 							<c:if test="${fn:contains(categoryName, 'Сітка')}">
-								<a href="categories/grid"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
+								<a href="categories/grid/1"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
 							</c:if>
 							<c:if test="${fn:contains(categoryName, 'Реставрація')}">
 								<a href="#restavraciya"><img class="responsive-img" src="<c:url value="/static/images/${categ.imgFN}" />" alt=""></a>
@@ -37,13 +37,38 @@
 				</c:forEach>
 			</div>
             <div class="container" name="grid_table">
-                <div class="row">
-                    <c:forEach var="grid" items="${grids}">
-                        <div class="collection">
-                            <a href="#!" class="collection-item">${grid.name}, ${grid.cell_h} / ${grid.cell_w}, ${grid.price} грн.</a>
-                        </div>
-                    </c:forEach>
-                </div>
+				<c:forEach var="grid" items="${grids}">
+					<ul class="collection">
+						<li class="collection-item avatar">
+								<%--<img src="images/yuna.jpg" alt="" class="circle">--%>
+							<i class="material-icons circle green">insert_chart</i>
+							<span class="title">${grid.name}</span>
+							<p>Висота/Ширина ячейки: ${grid.cell_h}
+								/ ${grid.cell_w}<br>
+								Ціна: ${grid.price}
+								<a style="margin-top: 30px;" href="<c:url value='/categories/grid/edit/${grid.id}'/>"
+								   class="secondary-content"><i class="material-icons">mode_edit</i></a>
+							</p>
+
+							<a href="#modal${grid.id}" class="secondary-content modal-trigger"><i class="material-icons">delete</i></a>
+
+
+							<div id="modal${grid.id}" class="modal bottom-sheet">
+								<div class="modal-content">
+									<h4>Видалення сітки</h4>
+									<p>Ви дійсно хочете видалити елемент?</p>
+								</div>
+								<div class="modal-footer">
+									<c:url var="deleteGrid" value="/categories/grid/${grid.id}"/>
+									<form:form method="POST" action="${deleteGrid}">
+										<input type="submit" value="Видалити" class="btn btn-primary btn-sm"/> or <a
+											href="<c:url value='/categories/grid' />">Відмінити</a>
+									</form:form>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</c:forEach>
             </div>
             <div class="container" name="torsion_table">
                 <div class="row">
