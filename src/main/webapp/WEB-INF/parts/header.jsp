@@ -9,11 +9,11 @@
 	<nav class="light-blue lighten-1" role="navigation">
 		<div class="container">
 			<div class="nav-wrapper">
-				<a id="logo-container" href="/InternetShop/" class="brand-logo">ГАЛПРОМ</a>
+				<a id="logo-container" href="/galprom/" class="brand-logo">ГАЛПРОМ</a>
 				<ul class="right hide-on-med-and-down">
-					<li class="active"><a href="/InternetShop/">Домашня сторінка</a></li>
-					<li><a href="/InternetShop/categories/page/1">Категорії</a></li>
-					<li><a href="/InternetShop/login">Залогінитись</a></li>
+					<li class="active"><a href="/galprom/ ">Домашня сторінка</a></li>
+					<li><a href="/galprom">Категорії</a></li>
+					<li><a href="#">Залогінитись</a></li>
 					<c:if test="${pageContext.request.userPrincipal.name != null}">
 						<li>Welcome : ${pageContext.request.userPrincipal.name} | <a
 								href="javascript:formSubmit()"> Розлогінитись</a>
@@ -26,9 +26,9 @@
 					</c:if>
 				</ul>
 				<ul id="nav-mobile" class="side-nav">
-					<li class="active"><a href="/InternetShop/">Домашня сторінка</a></li>
-					<li><a href="/InternetShop/categories/page/1">Категорії</a></li>
-					<li><a href="/InternetShop/login">Залогінитись</a></li>
+					<li class="active"><a href="//galprom/">Домашня сторінка</a></li>
+					<li><a href="/galprom">Категорії</a></li>
+					<li><a href="#">Залогінитись</a></li>
 					<c:if test="${pageContext.request.userPrincipal.name != null}">
 						<li>Welcome : ${pageContext.request.userPrincipal.name} | <a
 								href="javascript:formSubmit()"> Logout</a>
