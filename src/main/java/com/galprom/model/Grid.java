@@ -1,6 +1,10 @@
 package com.galprom.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
@@ -15,6 +19,9 @@ public class Grid implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotNull
+    @NotEmpty(message = "Поле має бути не пустим")
+    @Size(min = 2, max = 30, message = "Введена назва має бути від 2 до 30 символів")
     @Column(name = "name",columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
     private String name;
 
@@ -32,7 +39,6 @@ public class Grid implements Serializable {
 
     @Column(name = "roll_width")
     private Integer roll_width;//sm
-
     @Column(name = "price")
     private Double price;//UAH
 

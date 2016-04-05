@@ -50,8 +50,9 @@ public class GridController {
     @RequestMapping(value = { "/categories/newGrid" }, method = RequestMethod.POST)
     public String newGridAction(@Valid Grid grid, BindingResult result,
                            ModelMap model) {
+        gridValidator.validate(grid, result);
         if (result.hasErrors()) {
-            return "grid_new_succesful";
+            return "grid_new";
         }
         gridRepository.save(grid);
         model.addAttribute("success", "Сітка " + grid.getName() + " " + " додана успішно");

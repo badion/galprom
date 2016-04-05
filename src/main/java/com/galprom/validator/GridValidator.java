@@ -19,6 +19,7 @@ public class GridValidator implements Validator{
     }
 
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "good.name.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "grid.name.required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "grid.price.required");
     }
 }

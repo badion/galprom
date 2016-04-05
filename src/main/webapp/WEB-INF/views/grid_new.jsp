@@ -14,88 +14,86 @@
   	 	<jsp:include page="../parts/footer.jsp"/>
     </jsp:attribute>
     <jsp:body>
+
         <div class="container">
-            <div class="well lead">Форма для додавання сітки</div>
-            <form:form method="POST" modelAttribute="grid" class="form-horizontal">
-                <form:input type="hidden" path="id" id="id"/>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="name">Назва</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="name" id="name" class="form-control input-sm"/>
+            <h4>Форма для додавання сітки</h4>
+            <div class="row">
+                <form:form method="POST" modelAttribute="grid" class="col s12">
+                    <form:input type="hidden" path="id" id="id"/>
+
+                    <!-- Назва -->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">info</i>
+                            <form:input type="text" path="name" id="name"  class="validate"/>
+                            <label for="name">Назва</label>
                             <div class="has-error">
                                 <form:errors path="name" class="help-inline"/>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="cell_w">Ширина ячейки</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="cell_w" id="cell_w" class="form-control input-sm"/>
+
+                    <!-- Ширина довжина ячейки -->
+                    <div class="row">
+                       <div class="input-field col s6">
+                            <i class="material-icons prefix">aspect_ratio</i>
+                            <form:input type="text" path="cell_w" id="cell_w" class="validate"/>
+                            <label for="cell_w">Ширина ячейки</label>
                             <div class="has-error">
                                 <form:errors path="cell_w" class="help-inline"/>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="cell_h">Висота ячейки</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="cell_h" id="cell_h" class="form-control input-sm"/>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">swap_vert</i>
+                            <form:input type="text" path="cell_h" id="cell_h" class="validate"/>
+                            <label for="cell_h">Висота ячейки</label>
                             <div class="has-error">
                                 <form:errors path="cell_h" class="help-inline"/>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="diametr">Діаметр</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="diametr" id="diametr" class="form-control input-sm"/>
-                            <div class="has-error">
-                                <form:errors path="diametr" class="help-inline"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="roll_length">Довжина рулону</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="roll_length" id="roll_length" class="form-control input-sm"/>
+
+                    <!-- Довжина ширина рулону -->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">swap_horiz</i>
+                            <form:input type="text" path="roll_length" id="roll_length" class="validate"/>
+                            <label for="roll_length">Довжина рулону</label>
                             <div class="has-error">
                                 <form:errors path="roll_length" class="help-inline"/>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="roll_width">Ширина рулону</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="roll_width" id="roll_width" class="form-control input-sm"/>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">aspect_ratio</i>
+                            <form:input type="text" path="roll_width" id="roll_width" class="validate"/>
+                            <label for="roll_width">Ширина рулону</label>
                             <div class="has-error">
                                 <form:errors path="roll_width" class="help-inline"/>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label class="col-md-3 control-lable" for="price">Ціна(грн.)</label>
-                        <div class="col-md-7">
-                            <form:input type="text" path="price" id="price" class="form-control input-sm"/>
+
+                    <!-- Діаметр, ціна-->
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <form:input type="text" path="diametr" id="diametr"  class="validate"/>
+                            <label for="diametr">Діаметр</label>
+                            <div class="has-error">
+                                <form:errors path="diametr" class="help-inline"/>
+                            </div>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">payment</i>
+                            <form:input type="text" path="price" id="price" class="validate"/>
+                            <label for="price">Ціна</label>
                             <div class="has-error">
                                 <form:errors path="price" class="help-inline"/>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                    <p>Поля з * обов'язкові</p>
+                    <div class="row">
                     <div class="form-actions floatRight">
                         <c:choose>
                             <c:when test="${edit}">
@@ -110,6 +108,6 @@
                     </div>
                 </div>
             </form:form>
-        </div>
+         </div>
     </jsp:body>
 </t:genericpage>
