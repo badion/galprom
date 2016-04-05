@@ -23,9 +23,9 @@
                             / ${grid.cell_w}, ${grid.price}
                             грн.</a>
                         <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+                        <a class="waves-effect waves-light btn modal-trigger" href="#modal${grid.id}">Modal</a>
                         <!-- Modal Structure -->
-                        <div id="modal1" class="modal bottom-sheet">
+                        <div id="modal${grid.id}" class="modal bottom-sheet">
                             <div class="modal-content">
                                 <h4>Видалення сітки</h4>
                                 <p>Ви дійсно хочете видалити елемент?</p>
