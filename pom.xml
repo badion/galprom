@@ -14,6 +14,7 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <mysql.version>5.1.35</mysql.version>
         <jstl.version>1.2</jstl.version>
+        <log4j.version>1.2.17</log4j.version>
         <hibernate.version>4.3.9.Final</hibernate.version>
         <servlet.api.version>3.0-alpha-1</servlet.api.version>
         <jsp.api>2.2</jsp.api>
@@ -123,27 +124,21 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate.validator}</version>
         </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>galprom</finalName>
     </build>
-    <!--<build>
-        <finalName>galprom</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>-->
 </project>

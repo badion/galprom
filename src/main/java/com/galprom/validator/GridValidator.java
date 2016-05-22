@@ -13,7 +13,6 @@ import org.springframework.validation.Validator;
 @Component
 public class GridValidator implements Validator{
 
-
     public boolean supports(Class<?> aClass) {
         return Grid.class.equals(aClass);
     }

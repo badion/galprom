@@ -1,6 +1,5 @@
 package com.galprom.controller;
 
-import com.galprom.model.Category;
 import com.galprom.model.Grid;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
@@ -8,9 +7,7 @@ import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +33,7 @@ public class GridController {
     @Autowired
     private GridServiceImpl gridService;
 
+
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
         model.addObject("grids", gridRepository.findAll()).setViewName("grids");
@@ -44,7 +42,7 @@ public class GridController {
 
     @RequestMapping(value = {"/categories/newGrid"}, method = RequestMethod.GET)
     public String newGrid(ModelMap model) {
-        Grid grid = new Grid();
+        Grid grid=new Grid();
         model.addAttribute("grid", grid);
         model.addAttribute("edit", false);
         return "grid_new";
