@@ -38,7 +38,7 @@ public class Grid implements Serializable {
     private Integer roll_length;//sm
 
     @Column(name = "roll_width")
-    private Integer roll_width;//sm
+    private Integer roll_width;//sml
     @Column(name = "price")
     private Double price;//UAH
 

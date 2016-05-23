@@ -45,6 +45,8 @@ public class MailSender {
         message.setFrom(new InternetAddress(from + "@gmail.com"));
 
         String responderList = "galprom@i.ua";
+
+        //user galprom
         //pass qwedsa
         //link http://www.i.ua/
 
