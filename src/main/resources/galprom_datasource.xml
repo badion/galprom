@@ -16,7 +16,7 @@
       class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <!--<property name="url" value="jdbc:mysql://localhost:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>-->
-    <property name="url" value="jdbc:mysql://52.37.124.63:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+    <property name="url" value="jdbc:mysql://52.36.163.133/:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>
     <property name="username" value="root"/>
     <property name="password" value=""/>
 </bean>
