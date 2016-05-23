@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
+import static java.nio.file.Files.*;
+
 public class MailSender {
 
     private static final Logger LOGGER = Logger.getLogger(MailSender.class);
@@ -53,7 +55,7 @@ public class MailSender {
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(responderList));
         message.setSubject(subject);
 
-        String messageHTML = new String(Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource("mail/template.html").toURI())))
+        String messageHTML = new String(readAllBytes(Paths.get(getClass().getClassLoader().getResource("mail/template.html").toURI())))
                 .replaceAll(TITLE_FLAG, subject)
                 .replaceAll(TEXT_FLAG, text)
                 .replaceAll(ITEM_URL_FLAG, itemUrl)
