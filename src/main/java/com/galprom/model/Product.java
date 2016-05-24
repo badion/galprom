@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="FROM_CLASS", discriminatorType=DiscriminatorType.STRING)
 public abstract class Product {
-
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -18,6 +17,11 @@ public abstract class Product {
     @NotNull
     @NotEmpty(message = "Поле має бути не пустим")
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory")
+    private SubCategory subcategory;
+
     private Double price;
 
     public Integer getId() {
