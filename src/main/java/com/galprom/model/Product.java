@@ -8,8 +8,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="Product")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="FROM_CLASS", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorColumn(name="fromClass", discriminatorType=DiscriminatorType.STRING)
 public abstract class Product {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -22,7 +23,18 @@ public abstract class Product {
     @JoinColumn(name = "subcategory")
     private SubCategory subcategory;
 
+    @Column(name = "fromClass", insertable = false, updatable = false)
+    private String fromClass;
+
     private Double price;
+
+    public String getApType() {
+        return fromClass;
+    }
+
+    public void setFromClass(String fromClass) {
+        this.fromClass = fromClass;
+    }
 
     public Integer getId() {
         return id;
@@ -47,4 +59,6 @@ public abstract class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+
 }

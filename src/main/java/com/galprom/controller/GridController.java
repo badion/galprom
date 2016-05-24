@@ -1,8 +1,10 @@
 package com.galprom.controller;
 
 import com.galprom.model.Grid;
+import com.galprom.model.Product;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
+import com.galprom.repository.ProductRepository;
 import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.hibernate.Hibernate;
@@ -31,12 +33,17 @@ public class GridController {
     private GridValidator gridValidator;
 
     @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
     private GridServiceImpl gridService;
 
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
-        model.addObject("grids", gridRepository.findAll()).setViewName("grids");
+
+        System.out.println(productRepository.findProductsByFromClass("grid"));
+        model.addObject("grids", productRepository.findProductsByFromClass("grid")).setViewName("grids");
         return model;
     }
 
