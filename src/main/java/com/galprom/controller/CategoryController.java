@@ -1,8 +1,6 @@
 package com.galprom.controller;
 
-import com.galprom.model.Category;
-import com.galprom.model.Grid;
-import com.galprom.model.Torsion;
+import com.galprom.model.*;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
 import com.galprom.repository.TorsionRepository;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
 @Controller
 public class CategoryController {
@@ -46,6 +46,14 @@ public class CategoryController {
 
         List<Torsion> torsions = torsionRepository.findAll();
         model.addObject(TORSION, torsions);
+
+        for (Category category : categories) {
+            for (SubCategory subCategory : category.getSubCategories()) {
+                for (Product prod : subCategory.getProducts()) {
+                    System.out.println(prod);
+                }
+            }
+        }
 
         return model;
     }
