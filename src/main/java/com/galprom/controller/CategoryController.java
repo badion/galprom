@@ -1,10 +1,7 @@
 package com.galprom.controller;
 
-import com.galprom.model.Category;
-import com.galprom.model.Grid;
-import com.galprom.model.Torsion;
+import com.galprom.model.*;
 import com.galprom.repository.CategoryRepository;
-import com.galprom.repository.GridRepository;
 import com.galprom.repository.TorsionRepository;
 import com.galprom.service.GridServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+
 @Controller
 public class CategoryController {
 
@@ -24,9 +22,6 @@ public class CategoryController {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    @Autowired
-    private GridRepository gridRepository;
 
     @Autowired
     private TorsionRepository torsionRepository;

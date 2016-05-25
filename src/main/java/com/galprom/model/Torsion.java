@@ -40,6 +40,6 @@ public class Torsion extends Product {
         return "Torsion{" +
                 "code_left='" + code_left + '\'' +
                 ", code_right='" + code_right + '\'' +
-                '}';
+                "} " + super.toString();
     }
 }

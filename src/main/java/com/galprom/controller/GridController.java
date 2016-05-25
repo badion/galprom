@@ -41,9 +41,7 @@ public class GridController {
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
-
-        System.out.println(productRepository.findProductsByFromClass("grid"));
-        model.addObject("grids", productRepository.findProductsByFromClass("grid")).setViewName("grids");
+        model.addObject("grids", gridRepository.findAll()).setViewName("grids");
         return model;
     }
 

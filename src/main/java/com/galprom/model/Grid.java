@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 
 @Entity
-@DiscriminatorValue(value="grid")
+@DiscriminatorValue(value="Grid")
 public class Grid extends Product{
 
     @Column(name = "cell_w")
@@ -34,7 +34,7 @@ public class Grid extends Product{
                 ", diametr=" + diametr +
                 ", roll_length=" + roll_length +
                 ", roll_width=" + roll_width +
-                '}';
+                "} " + super.toString();
     }
 
     public Integer getCell_w() {

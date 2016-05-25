@@ -59,4 +59,23 @@ public class SubCategory {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "SubCategory{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category=" + category +
+                ", products=" + products +
+                '}';
+    }
 }

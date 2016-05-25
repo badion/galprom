@@ -6,13 +6,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="Product")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="fromClass", discriminatorType=DiscriminatorType.STRING)
+@Table(name = "Product")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "fromClass", discriminatorType = DiscriminatorType.STRING)
 public abstract class Product {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotNull
@@ -23,18 +23,7 @@ public abstract class Product {
     @JoinColumn(name = "subcategory")
     private SubCategory subcategory;
 
-    @Column(name = "fromClass", insertable = false, updatable = false)
-    private String fromClass;
-
     private Double price;
-
-    public String getApType() {
-        return fromClass;
-    }
-
-    public void setFromClass(String fromClass) {
-        this.fromClass = fromClass;
-    }
 
     public Integer getId() {
         return id;
@@ -60,5 +49,12 @@ public abstract class Product {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
