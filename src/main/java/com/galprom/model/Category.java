@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "categories")
 public class Category implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", columnDefinition = "bigint")

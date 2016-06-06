@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(value="Grid")
-public class Grid extends Product{
+public class Grid extends Product {
 
     @Column(name = "cell_w")
     private Integer cell_w;//mm
@@ -75,5 +75,34 @@ public class Grid extends Product{
 
     public void setRoll_width(Integer roll_width) {
         this.roll_width = roll_width;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Grid grid = (Grid) o;
+
+        if (cell_w != null ? !cell_w.equals(grid.cell_w) : grid.cell_w != null) return false;
+        if (cell_h != null ? !cell_h.equals(grid.cell_h) : grid.cell_h != null) return false;
+        if (diametr != null ? !diametr.equals(grid.diametr) : grid.diametr != null) return false;
+        if (roll_length != null ? !roll_length.equals(grid.roll_length) : grid.roll_length != null) return false;
+        return roll_width != null ? roll_width.equals(grid.roll_width) : grid.roll_width == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cell_w != null ? cell_w.hashCode() : 0;
+        result = 31 * result + (cell_h != null ? cell_h.hashCode() : 0);
+        result = 31 * result + (diametr != null ? diametr.hashCode() : 0);
+        result = 31 * result + (roll_length != null ? roll_length.hashCode() : 0);
+        result = 31 * result + (roll_width != null ? roll_width.hashCode() : 0);
+        return result;
+    }
+
+    public int compareTo(Grid o) {
+     return this.getName().compareTo(o.getName()) == 0 ? this.getDiametr().compareTo(o.getDiametr()) : this.getDiametr().compareTo(o.getDiametr());
     }
 }

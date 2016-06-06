@@ -8,12 +8,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "Product")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "fromClass", discriminatorType = DiscriminatorType.STRING)
-public abstract class Product {
+@DiscriminatorColumn(name = "FROM_CLASS", discriminatorType = DiscriminatorType.STRING)
+public abstract class Product implements Comparable<Grid> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "id", columnDefinition = "bigint")
+    private Long id;
 
     @NotNull
     @NotEmpty(message = "Поле має бути не пустим")
@@ -25,11 +26,11 @@ public abstract class Product {
 
     private Double price;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

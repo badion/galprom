@@ -9,9 +9,10 @@ import java.util.List;
 @Entity
 @Table(name="SubCategory")
 public class SubCategory {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @NotNull
     @NotEmpty(message = "Поле має бути не пустим")
@@ -28,11 +29,11 @@ public class SubCategory {
     @OneToMany(mappedBy = "subcategory", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Product> products;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

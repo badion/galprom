@@ -42,4 +42,8 @@ public class Torsion extends Product {
                 ", code_right='" + code_right + '\'' +
                 "} " + super.toString();
     }
+
+    public int compareTo(Grid o) {
+        return 0;
+    }
 }

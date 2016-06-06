@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.*;
 
 @Controller
 public class GridController {
@@ -41,7 +44,9 @@ public class GridController {
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
-        model.addObject("grids", gridRepository.findAll()).setViewName("grids");
+        List<Grid> grids = gridRepository.findAll();
+        sort(grids); // default sorting by name, diametr
+        model.addObject("grids", grids).setViewName("grids");
         return model;
     }
 

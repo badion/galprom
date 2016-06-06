@@ -21,4 +21,8 @@ public class Tools extends Product{
                 "type='" + type + '\'' +
                 "} " + super.toString();
     }
+
+    public int compareTo(Grid o) {
+        return 0;
+    }
 }
