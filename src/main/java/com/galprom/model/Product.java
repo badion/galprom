@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "FROM_CLASS", discriminatorType = DiscriminatorType.STRING)
 public abstract class Product implements Comparable<Grid> {
