@@ -51,11 +51,7 @@ public class GridController {
     public ModelAndView getAllGrids(ModelAndView model) {
         Map<SubCategory, List<Grid>> gridPage = new HashMap<>();
 
-        categoryRepository.findAll()
-                .stream()
-                .filter(category -> category.getLink().equals("grid"))
-                .collect(Collectors.toList())
-                .get(0)
+        categoryRepository.findBylink("grid")
                 .getSubCategories()
                 .forEach(subCategory -> gridPage
                 .put(subCategory,subCategory.getProducts()
@@ -99,14 +95,14 @@ public class GridController {
     @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.GET)
     public String editGrid(@PathVariable("id") Long id, ModelMap model) {
         Grid grid = gridRepository.findOne(id);
+        System.out.println(grid.getSubcategory());
         model.addAttribute("grid", grid);
         model.addAttribute("edit", true);
         return "grid_new";
     }
 
     @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.POST)
-    public String editGridAction(@Valid Grid grid, BindingResult result,
-                                 ModelMap model) {
+    public String editGridAction(@Valid Grid grid, BindingResult result, ModelMap model) {
         gridValidator.validate(grid, result);
         if (result.hasErrors()) {
             return "grid_new";

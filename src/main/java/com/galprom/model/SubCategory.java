@@ -11,7 +11,8 @@ import java.util.List;
 public class SubCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "id", columnDefinition = "bigint")
+    private Long id;
 
     @NotNull
     @NotEmpty(message = "Поле має бути не пустим")
@@ -39,11 +40,11 @@ public class SubCategory {
         this.imgFN = imgFN;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -13,7 +13,8 @@ public abstract class Product {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    @Column(name = "id", columnDefinition = "bigint")
+    private Long id;
 
     @NotNull
     @NotEmpty(message = "Поле має бути не пустим")
@@ -44,11 +45,11 @@ public abstract class Product {
         this.fromClass = fromClass;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
