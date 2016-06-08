@@ -22,8 +22,19 @@ public class Category implements Serializable {
     @Column(name = "imgFN")
     private String imgFN;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @Column(name = "link")
+    private String link;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<SubCategory> subCategories;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public Long getId() {
         return id;

@@ -10,20 +10,20 @@
     http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<tx:annotation-driven/>
+    <tx:annotation-driven/>
 
-<bean id="dataSource"
-      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <!--<property name="url" value="jdbc:mysql://localhost:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>-->
-    <property name="url" value="jdbc:mysql://52.37.124.63:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>
-    <property name="username" value="root"/>
-    <property name="password" value="1234"/>
-</bean>
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+        <!--<property name="url" value="jdbc:mysql://52.37.124.63:3306/galprom?useUnicode=yes&amp;characterEncoding=UTF-8"/>-->
+        <property name="username" value="root"/>
+        <property name="password" value="1234"/>
+    </bean>
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="jpaProperties">
             <props>
@@ -32,8 +32,8 @@
             </props>
 
         </property>
-        <property name="persistenceUnitName" value="galprom" />
-        <property name="dataSource" ref="dataSource" />
+        <property name="persistenceUnitName" value="galprom"/>
+        <property name="dataSource" ref="dataSource"/>
 
     </bean>
 

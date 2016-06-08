@@ -23,6 +23,14 @@ public abstract class Product {
     @JoinColumn(name = "subcategory")
     private SubCategory subcategory;
 
+    public SubCategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(SubCategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
     @Column(name = "fromClass", insertable = false, updatable = false)
     private String fromClass;
 

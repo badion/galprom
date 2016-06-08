@@ -7,10 +7,10 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name="SubCategory")
+@Table(name = "SubCategory")
 public class SubCategory {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotNull
@@ -25,8 +25,19 @@ public class SubCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "subcategory", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @Column(name = "imgFN")
+    private String imgFN;
+
+    @OneToMany(mappedBy = "subcategory", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Product> products;
+
+    public String getImgFN() {
+        return imgFN;
+    }
+
+    public void setImgFN(String imgFN) {
+        this.imgFN = imgFN;
+    }
 
     public Integer getId() {
         return id;
@@ -74,8 +85,6 @@ public class SubCategory {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", category=" + category +
-                ", products=" + products +
                 '}';
     }
 }
