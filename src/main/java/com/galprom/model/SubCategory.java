@@ -13,13 +13,13 @@ public class SubCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
-
-    @NotNull
-    @NotEmpty(message = "Поле має бути не пустим")
+//
+//    @NotNull
+//    @NotEmpty(message = "Поле має бути не пустим")
     private String name;
 
-    @NotNull
-    @NotEmpty(message = "Поле має бути не пустим")
+//    @NotNull
+//    @NotEmpty(message = "Поле має бути не пустим")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

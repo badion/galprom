@@ -1,3 +1,48 @@
+<div class="clear"></div>
+<div class="footer-section">
+	<div class="footer">
+		<div class="panel marRight30">
+			<div class="title">
+				<h2>Корисні посилання</h2>
+			</div>
+			<div class="content">
+				<ul>
+					<li><a href="#">Quisque consequat mattis sapien cursus</a></li>
+					<li><a href="#">Etiam convallis turpis sit amet turpis ho</a></li>
+					<li><a href="#">Duis sit amet diam eget lorem faucibus</a></li>
+					<li><a href="#">Maecenas sed ante sit amet leo pharetra</a></li>
+					<li class="boder-bottom-none"><a href="#">Accusmus justo obilo dignissimon sustom</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="panel marRight30">
+			<div class="title">
+				<h2>Про компанію</h2>
+			</div>
+			<div class="content">
+				<P><span>Ми Львівська Компанія </span></P>
+				<P>яка надає послуги з реставрації запчастин до імпортних авто.
+					А також виготовленням торсіонів і металевої сітки.</P>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="title">
+				<h2>Авторські права</h2>
+			</div>
+			<div class="content">
+				<div class="copyriight">
+					<P class="border-bottom">ТОВ ГалпромГарант <br />
+						Copy rights. 2016. Всі права захищені.</P>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<!---------------end-footer-section---------------->
+
+
+<%--
 <footer class="page-footer orange">
 	<div class="container">
 		<div class="row">
@@ -33,3 +78,4 @@
 		</div>
 	</div>
 </footer>
+--%>

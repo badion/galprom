@@ -19,6 +19,7 @@
             <div class="row">
                 <form:form method="POST" modelAttribute="grid" class="col s12">
                     <form:input type="hidden" path="id" id="id"/>
+                    <form:input type="hidden" path="subcategory" id="subcategory"/>
                     <!-- Назва -->
                     <div class="row">
                         <div class="input-field col s6">
@@ -28,6 +29,11 @@
                             <div class="has-error">
                                 <form:errors path="name" class="help-inline"/>
                             </div>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">swap_vert</i>
+                            <form:input type="text" path="subcategory" id="subcategory"/>
+                            <label for="subcategory">subcategory</label>
                         </div>
                     </div>
 

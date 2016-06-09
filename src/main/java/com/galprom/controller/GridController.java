@@ -95,7 +95,6 @@ public class GridController {
     @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.GET)
     public String editGrid(@PathVariable("id") Long id, ModelMap model) {
         Grid grid = gridRepository.findOne(id);
-        System.out.println(grid.getSubcategory());
         model.addAttribute("grid", grid);
         model.addAttribute("edit", true);
         return "grid_new";
@@ -103,13 +102,17 @@ public class GridController {
 
     @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.POST)
     public String editGridAction(@Valid Grid grid, BindingResult result, ModelMap model) {
-        gridValidator.validate(grid, result);
-        if (result.hasErrors()) {
-            return "grid_new";
-        }
+//        gridValidator.validate(grid, result);
+
+//        if (result.hasErrors()) {
+//            System.out.println("errors");
+//            return "grid_new";
+//        }
+        subCategoryRepository.save(grid.getSubcategory());
         gridRepository.save(grid);
+
 //        model.addAttribute("success");
-        return "redirect:/categories/grid/1";
+        return "redirect:/categories/grid";
     }
 
     @RequestMapping(value = "/categories/grid/{pageNumber}", method = RequestMethod.GET)

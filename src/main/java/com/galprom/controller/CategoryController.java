@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
 @Controller
 public class CategoryController {
