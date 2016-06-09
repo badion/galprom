@@ -13,99 +13,170 @@
   	 	<jsp:include page="../parts/footer.jsp"/>
     </jsp:attribute>
     <jsp:body>
-
-
-        <div class="container">
-            <div class="bannner-section">
-                <div class="banner-title-section">
-                    <div class="banner-title">
-                        <c:forEach var="categ" items="${category}">
-                            <div class="panel">
-                                <h1>${categ.name}</h1>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="banner-row">
-                    <div class="banner">
-                        <c:forEach var="categ" items="${category}">
-                        <a href="categories/${categ.link}">
-                            <div class="panel"><img src="<c:url value="/static/images/${categ.imgFN}" />"
-                                                    alt="">
-                        </a></div>
-                    </c:forEach>
-                </div>
-                <div class="clear"></div>
+        <div class="clearing"></div>
+        <div class="header">
+            <div class="logo">
+                <h1 style="margin-top: 42px;">ГАЛПРОМ<span>ГАРАНТ</span></h1>
             </div>
-            <div class="banner-content">
-                <div class="row">
-                    <c:forEach var="categ" items="${category}">
-                        <div class="panel">
+            <div class="social">
+                <ul>
+                    <li><a href="#"><img src="<c:url value="/static/images/aim.png" />" alt="">
+                    <li><a href="#"><img src="<c:url value="/static/images/facebook.png" />" alt="">
+                    <li><a href="#"><img src="<c:url value="/static/images/twwtter.png" />" alt="">
+                    <li><a href="#"><img src="<c:url value="/static/images/linkedin.png" />" alt="">
+                </ul>
+            </div>
+        </div>
+        <!--------header wrap ends--------->
+        <div class="banner">
+            <h1>Macenas Conte hendrit </h1>
+            <h2>lorem quis orcitor</h2>
+        </div>
+        <div class="page">
+        <div class="primary-col">
+            <c:forEach var="categ" items="${category}" varStatus="myIndex">
+                <c:if test="${myIndex.index < 2}">
+                    <div class="block float-left mar-top30">
+                        <div class=" panel">
                             <div class="title">
                                 <h1>${categ.name}</h1>
                             </div>
                             <div class="content">
-                                <p>${categ.subtitle}</p>
-                            </div>
-                            <div class="controller">
-                                <div class="button"><a href="#">More Info</a></div>
+                                <img style="width: 250px;
+                                            height: 200px;"
+                                     src="<c:url value="/static/images/${categ.imgFN}" />" alt="">
+                                <h2>${categ.subtitle}</h2>
+
+                                <button type="button" class="btn btn-default"> <a href="categories/${categ.link}">${categ.name}</a></button>
                             </div>
                         </div>
-                    </c:forEach>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="clear"></div>
+                    </div>
+                </c:if>
+            </c:forEach>
         </div>
-
-        <!--------------banner-section----------->
-        <div class="page-section">
-            <div class="page">
-                <div class="right-section">
-
-
-                    <table class="controller">
-                        <tr>
-                            <th><p>Ім'я</p></th>
-                            <th><p>Ширина ячейки</p></th>
-                            <th><p>Висота ячейки</p></th>
-                            <th><p>Діаметер ячейки</p></th>
-                            <th><p>Довжина рулону</p></th>
-                            <th><p>Ширина рулону</p></th>
-                            <th><p>Ціна</p></th>
-                        </tr>
-                        <c:forEach var="grid" items="${grids}">
-                            <tr>
-                                <td><p>${grid.name}</p></td>
-                                <td><p>${grid.cell_w}</p></td>
-                                <td><p>${grid.cell_h}</p></td>
-                                <td><p>${grid.diametr}</p></td>
-                                <td><p>${grid.roll_length}</p></td>
-                                <td><p>${grid.roll_width}</p></td>
-                                <td><p>${grid.price}</p></td>
-                                <td>
-                                    <div class="button">
-                                        <a href="<c:url value='/categories/grid/${grid.id}'/>"
-                                           class="secondary-content">Більше</a></p>
-
-                                            <%--<a href="#">More Info</a>--%>
-                                    </div>
-                                </td>
-                                <td>
-                                    <form:form method="POST" action="/categories/grid/${grid.id}">
-                                        <input type="submit" value="Видалити" class="btn btn-primary btn-sm"/>
-                                    </form:form></td>
-                            </tr>
+        <div class="side-bar">
+            <div class="search" style="margin-top: 30px;">
+                <div class="title">
+                    <h1>Пошук</h1>
+                </div>
+                <ul>
+                    <li>
+                        <input name="" type="text" class="textfiled"/>
+                    </li>
+                    <li>
+                        <img src="<c:url value="/static/images/search-icon.jpg" />" alt="search">
+                    </li>
+                </ul>
+            </div>
+            <div class="panel">
+                <div class="title"><span>
+                 <img src="<c:url value="/static/images/icon1.jpg" />" alt="icon">
+                </span>
+                    <h1>Категорії</h1>
+                </div>
+                <div class="content">
+                    <ul>
+                        <c:forEach var="categ" items="${category}">
+                            <li><a href="/galprom/categories/${categ.link}">${categ.name}</a></li>
                         </c:forEach>
-                    </table>
-
-
+                    </ul>
                 </div>
-                <!--------------------right-section------------>
             </div>
-            <div class="clear"></div>
         </div>
+
+
+        <%--  <div class="container">
+              <div class="bannner-section">
+                  <div class="banner-title-section">
+                      <div class="banner-title">
+                          <c:forEach var="categ" items="${category}">
+                              <div class="panel">
+                                  <h1>${categ.name}</h1>
+                              </div>
+                          </c:forEach>
+                      </div>
+                  </div>
+                  <div class="clear"></div>
+                  <div class="banner-row">
+                      <div class="banner">
+                          <c:forEach var="categ" items="${category}">
+                          <a href="categories/${categ.link}">
+                              <div class="panel"><img src="<c:url value="/static/images/${categ.imgFN}" />"
+                                                      alt="">
+                          </a></div>
+                      </c:forEach>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+              <div class="banner-content">
+                  <div class="row">
+                      <c:forEach var="categ" items="${category}">
+                          <div class="panel">
+                              <div class="title">
+                                  <h1>${categ.name}</h1>
+                              </div>
+                              <div class="content">
+                                  <p>${categ.subtitle}</p>
+                              </div>
+                              <div class="controller">
+                                  <div class="button"><a href="#">More Info</a></div>
+                              </div>
+                          </div>
+                      </c:forEach>
+                  </div>
+                  <div class="clear"></div>
+              </div>
+              <div class="clear"></div>
+          </div>
+
+          <!--------------banner-section----------->
+          <div class="page-section">
+              <div class="page">
+                  <div class="right-section">
+
+
+                      <table class="controller">
+                          <tr>
+                              <th><p>Ім'я</p></th>
+                              <th><p>Ширина ячейки</p></th>
+                              <th><p>Висота ячейки</p></th>
+                              <th><p>Діаметер ячейки</p></th>
+                              <th><p>Довжина рулону</p></th>
+                              <th><p>Ширина рулону</p></th>
+                              <th><p>Ціна</p></th>
+                          </tr>
+                          <c:forEach var="grid" items="${grids}">
+                              <tr>
+                                  <td><p>${grid.name}</p></td>
+                                  <td><p>${grid.cell_w}</p></td>
+                                  <td><p>${grid.cell_h}</p></td>
+                                  <td><p>${grid.diametr}</p></td>
+                                  <td><p>${grid.roll_length}</p></td>
+                                  <td><p>${grid.roll_width}</p></td>
+                                  <td><p>${grid.price}</p></td>
+                                  <td>
+                                      <div class="button">
+                                          <a href="<c:url value='/categories/grid/${grid.id}'/>"
+                                             class="secondary-content">Більше</a></p>
+
+                                              &lt;%&ndash;<a href="#">More Info</a>&ndash;%&gt;
+                                      </div>
+                                  </td>
+                                  <td>
+                                      <form:form method="POST" action="/categories/grid/${grid.id}">
+                                          <input type="submit" value="Видалити" class="btn btn-primary btn-sm"/>
+                                      </form:form></td>
+                              </tr>
+                          </c:forEach>
+                      </table>
+
+
+                  </div>
+                  <!--------------------right-section------------>
+              </div>
+              <div class="clear"></div>
+          </div>--%>
+
 
         <%--
                     <div class="row">

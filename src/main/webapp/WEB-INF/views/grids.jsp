@@ -16,8 +16,39 @@
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+            <h1>Види сіток</h1>
             <c:forEach var="subCategory" items="${gridPage.keySet()}">
-                <h4>${subCategory.name}:</h4>
+                <div class="container">
+                    <h2> ${subCategory.name}:</h2>
+                    <h2>${subCategory.description}:</h2>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Висота решітки</th>
+                            <th>Щирина решітки</th>
+                            <th>Діаметр</th>
+                            <th>Довжина рулону</th>
+                            <th>Ширина рулону</th>
+                            <th>Ціна</th>
+                        </tr>
+                        </thead>
+                        <c:forEach var="grid" items="${subCategory.products}">
+                            <tbody>
+                            <tr>
+                                <td>${grid.cell_h}</td>
+                                <td>${grid.cell_w}</td>
+                                <td>${grid.diametr}</td>
+                                <td>${grid.roll_length}</td>
+                                <td>${grid.roll_width}</td>
+                                <td>${grid.price}</td>
+                            </tr>
+                            </tbody>
+                        </c:forEach>
+                    </table>
+                </div>
+            </c:forEach>
+        </div>
+        <%--        <h4>${subCategory.name}:</h4>
                 <h1>${subCategory.description}:</h1>
                 <c:forEach var="grid" items="${subCategory.products}">
                     <ul class="collection">
@@ -53,6 +84,6 @@
                 </c:forEach>
                 <a href="<c:url value='/categories/newGrid' />">Додати нову сітку</a>
             </c:forEach>
-        </div>
+        </div>--%>
     </jsp:body>
 </t:genericpage>

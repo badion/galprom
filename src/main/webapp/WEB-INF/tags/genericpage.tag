@@ -9,6 +9,8 @@
 <%--
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">--%>
+<link href="<%=request.getContextPath()%>/static/css/bootstrap.css"
+    rel="stylesheet">
 <link href="<%=request.getContextPath()%>/static/css/style.css"
 	rel="stylesheet">
 <script
