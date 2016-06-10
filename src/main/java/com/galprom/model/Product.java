@@ -20,7 +20,7 @@ public abstract class Product {
     @NotEmpty(message = "Поле має бути не пустим")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "subcategory")
     private SubCategory subcategory;
 

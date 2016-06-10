@@ -41,11 +41,15 @@
                                 <td>${grid.roll_length}</td>
                                 <td>${grid.roll_width}</td>
                                 <td>${grid.price}</td>
-                                <td><a style="margin-top: 30px;"
-                                       href="<c:url value='/categories/grid/edit/${grid.id}'/>"
-                                       class="secondary-content"><i class="material-icons">mode_edit</i></a></td>
-                                <td><a href="#modal${grid.id}" class="secondary-content modal-trigger"><i
-                                        class="material-icons">delete</i></a></td>
+
+                                <td><a href="/product/${grid.id}/send_mail"
+                                       class="secondary-content"><i class="material-icons">send_mail</i></a></td>
+
+                                <td><a href="/categories/grid/${grid.id}/edit"
+                                       class="secondary-content"><i class="material-icons">edit</i></a></td>
+
+                                <td><a type="submit" href="/categories/grid/${grid.id}/delete">delete</a></td>
+
                             </tr>
                             </tbody>
                         </c:forEach>
@@ -53,6 +57,9 @@
                     <a href="<c:url value='/categories/newGrid' />">Додати нову позицію</a>
                 </div>
             </c:forEach>
+        </div>
+        <div class="modal-footer">
+
         </div>
     </jsp:body>
 </t:genericpage>

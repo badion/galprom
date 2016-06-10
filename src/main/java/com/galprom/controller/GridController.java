@@ -82,17 +82,13 @@ public class GridController {
         return "grid_new_succesful";
     }
 
-    @RequestMapping(value = "/categories/grid/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/categories/grid/{id}/delete", method = RequestMethod.GET)
     public String deleteGrid(@PathVariable("id") Long id) {
-        Grid grid = gridRepository.findOne(id);
-        if (grid != null) {
-            Hibernate.initialize(grid);
-            gridRepository.delete(grid);
-        }
+        gridRepository.delete(gridRepository.findOne(id));
         return "redirect:/categories/grid";
     }
 
-    @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.GET)
     public String editGrid(@PathVariable("id") Long id, ModelMap model) {
         Grid grid = gridRepository.findOne(id);
         model.addAttribute("grid", grid);
@@ -100,7 +96,7 @@ public class GridController {
         return "grid_new";
     }
 
-    @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.POST)
     public String editGridAction(@Valid Grid grid, BindingResult result, ModelMap model) {
         Product oldGrid = productRepository.getOne(grid.getId());
         grid.setSubcategory(oldGrid.getSubcategory());
@@ -108,19 +104,4 @@ public class GridController {
         gridRepository.save(grid);
         return "redirect:/categories/grid";
     }
-
-    @RequestMapping(value = "/categories/grid/{pageNumber}", method = RequestMethod.GET)
-    public ModelAndView grids(@PathVariable Integer pageNumber, ModelAndView model) {
-        List<Grid> gridsPerPage = gridService.grids(pageNumber);
-        List<Grid> allGrids = gridRepository.findAll();
-
-        Double amountPages = Math.ceil((double) allGrids.size() / gridService.NUMBER_OF_GRID_PER_PAGE);
-
-        model.addObject("pagesAmount", amountPages);
-        model.addObject("aLLgrids", allGrids);
-        model.addObject("grids", gridsPerPage);
-        model.setViewName("grids");
-        return model;
-    }
-
 }

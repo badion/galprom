@@ -33,7 +33,7 @@ public class CategoryController {
     @Autowired
     private GridServiceImpl gridService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/galprom"}, method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {
 
         List<Category> categories = categoryRepository.findAll();
@@ -46,7 +46,10 @@ public class CategoryController {
         List<Torsion> torsions = torsionRepository.findAll();
         model.addObject(TORSION, torsions);
 
-        categories.forEach(category -> category.getSubCategories().forEach(subCategory -> subCategory.getProducts().forEach(System.out::println)));
+        categories.forEach(
+                category -> category.getSubCategories().forEach(
+                        subCategory -> subCategory.getProducts().forEach(
+                                System.out::println)));
 
         return model;
     }
