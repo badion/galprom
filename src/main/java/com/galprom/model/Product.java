@@ -78,4 +78,8 @@ public abstract class Product {
                 ", price=" + price +
                 '}';
     }
+
+    public String getFromClass() {
+        return fromClass;
+    }
 }

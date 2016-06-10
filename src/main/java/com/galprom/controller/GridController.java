@@ -53,11 +53,11 @@ public class GridController {
 
         categoryRepository.findBylink("grid")
                 .getSubCategories()
-                .forEach(subCategory -> gridPage
-                .put(subCategory,subCategory.getProducts()
-                        .stream()
-                        .map(product -> (Grid)product)
-                        .collect(Collectors.toList())));
+                .forEach(subCategory ->
+                        gridPage.put(subCategory, subCategory.getProducts()
+                                .stream()
+                                .map(product -> (Grid) product)
+                                .collect(Collectors.toList())));
         model.addObject("gridPage", gridPage).setViewName("grids");
         return model;
     }
@@ -102,16 +102,10 @@ public class GridController {
 
     @RequestMapping(value = "/categories/grid/edit/{id}", method = RequestMethod.POST)
     public String editGridAction(@Valid Grid grid, BindingResult result, ModelMap model) {
-//        gridValidator.validate(grid, result);
-
-//        if (result.hasErrors()) {
-//            System.out.println("errors");
-//            return "grid_new";
-//        }
-        subCategoryRepository.save(grid.getSubcategory());
+        Product oldGrid = productRepository.getOne(grid.getId());
+        grid.setSubcategory(oldGrid.getSubcategory());
+        grid.setFromClass(oldGrid.getFromClass());
         gridRepository.save(grid);
-
-//        model.addAttribute("success");
         return "redirect:/categories/grid";
     }
 

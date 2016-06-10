@@ -46,13 +46,7 @@ public class CategoryController {
         List<Torsion> torsions = torsionRepository.findAll();
         model.addObject(TORSION, torsions);
 
-        for (Category category : categories) {
-            for (SubCategory subCategory : category.getSubCategories()) {
-                for (Product prod : subCategory.getProducts()) {
-                    System.out.println(prod);
-                }
-            }
-        }
+        categories.forEach(category -> category.getSubCategories().forEach(subCategory -> subCategory.getProducts().forEach(System.out::println)));
 
         return model;
     }
