@@ -8,17 +8,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "SubCategory")
-public class SubCategory {
+public class SubCategory implements Comparable<SubCategory> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
-//
+    //
 //    @NotNull
 //    @NotEmpty(message = "Поле має бути не пустим")
     private String name;
 
-//    @NotNull
+    //    @NotNull
 //    @NotEmpty(message = "Поле має бути не пустим")
     private String description;
 
@@ -87,5 +87,10 @@ public class SubCategory {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(SubCategory o) {
+        return name.compareTo(o.name);
     }
 }

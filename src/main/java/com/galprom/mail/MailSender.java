@@ -25,7 +25,7 @@ public class MailSender {
     private static final String USER_TEL_FLAG = "USER_TEL_FLAG";
     private static final String USER_MAIL_FLAG = "USER_MAIL_FLAG";
 
-    void sendMail(User user, String text, String itemUrl, String subject) throws MessagingException, IOException, URISyntaxException {
+    public void sendMail(User user, String text, String itemUrl, String subject) throws MessagingException, IOException, URISyntaxException {
         LOGGER.info("START send Message");
         LOGGER.info(user);
         LOGGER.info("MessageText : " + text);
@@ -76,5 +76,19 @@ public class MailSender {
         String subject = "Хуй";
         new MailSender().sendMail(user, text, itemUrl, subject);
 
+    }
+
+    public void makeSender(User user, String comment, String itemUrl, String subject) throws MessagingException, IOException, URISyntaxException {
+        new Thread(() -> {
+            try {
+                sendMail(user,comment,itemUrl,subject);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

@@ -25,7 +25,7 @@
                 <form:label path="username">Введіть ваш пароль</form:label>
                 <form:password class="form-control" style="    width: 300px;" id="password" name="password"
                                path="password"/><br>
-                <input type="submit" style="    width: 300px;" class="btn btn-lg btn-primary btn-block"></input>
+                <input type="submit" style="    width: 300px;" class="btn btn-lg btn-primary btn-block"/>
             </form:form>
         </div>
         <p>${message}</p>

@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">info</i>
-                            <form:input type="text" path="name" id="name"  class="validate"/>
+                            <form:input class="form-control validate" type="text" path="name" id="name"/>
                             <label for="name">Назва</label>
                             <div class="has-error">
                                 <form:errors path="name" class="help-inline"/>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">swap_vert</i>
-                            <form:input type="text" path="subcategory" id="subcategory"/>
+                            <form:input class="form-control"  type="text" path="subcategory.name" id="subcategory"/>
                             <label for="subcategory">subcategory</label>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="row">
                        <div class="input-field col s6">
                             <i class="material-icons prefix">aspect_ratio</i>
-                            <form:input type="text" path="cell_w" id="cell_w" class="validate"/>
+                            <form:input class="form-control validate" type="text" path="cell_w" id="cell_w"/>
                             <label for="cell_w">Ширина ячейки</label>
                             <div class="has-error">
                                 <form:errors path="cell_w" class="help-inline"/>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">swap_vert</i>
-                            <form:input type="text" path="cell_h" id="cell_h" class="validate"/>
+                            <form:input type="text" path="cell_h" id="cell_h" class="form-control validate"/>
                             <label for="cell_h">Висота ячейки</label>
                             <div class="has-error">
                                 <form:errors path="cell_h" class="help-inline"/>
@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">swap_horiz</i>
-                            <form:input type="text" path="roll_length" id="roll_length" class="validate"/>
+                            <form:input  type="text" path="roll_length" id="roll_length" class="form-control validate"/>
                             <label for="roll_length">Довжина рулону</label>
                             <div class="has-error">
                                 <form:errors path="roll_length" class="help-inline"/>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">aspect_ratio</i>
-                            <form:input type="text" path="roll_width" id="roll_width" class="validate"/>
+                            <form:input type="text" path="roll_width" id="roll_width" class="form-control validate"/>
                             <label for="roll_width">Ширина рулону</label>
                             <div class="has-error">
                                 <form:errors path="roll_width" class="help-inline"/>
@@ -81,7 +81,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
-                            <form:input type="text" path="diametr" id="diametr"  class="validate"/>
+                            <form:input type="text" path="diametr" id="diametr"  class="form-control validate"/>
                             <label for="diametr">Діаметр</label>
                             <div class="has-error">
                                 <form:errors path="diametr" class="help-inline"/>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">payment</i>
-                            <form:input type="text" path="price" id="price" class="validate"/>
+                            <form:input type="text" path="price" id="price" class="form-control validate"/>
                             <label for="price">Ціна</label>
                             <div class="has-error">
                                 <form:errors path="price" class="help-inline"/>

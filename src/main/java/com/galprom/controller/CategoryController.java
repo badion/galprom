@@ -33,7 +33,7 @@ public class CategoryController {
     @Autowired
     private GridServiceImpl gridService;
 
-    @RequestMapping(value = {"/","/galprom"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {
 
         List<Category> categories = categoryRepository.findAll();

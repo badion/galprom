@@ -32,34 +32,30 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
         model.setViewName("categories");
         HttpSession session = request.getSession();
         session.invalidate();
-        return model;
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView executeLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginBean") User loginBean) {
-        ModelAndView model = null;
+    public String executeLogin(HttpServletRequest request, @ModelAttribute("loginBean") User loginBean) {
         try {
             User isValidUser = loginDelegate.findUserByUserNameAndPassword(loginBean.getUsername(), loginBean.getPassword());
             if (isValidUser != null) {
                 System.out.println("User Login Successful");
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedInUser", isValidUser.getUsername());
-                model = new ModelAndView("categories");
             } else {
-                model = new ModelAndView("login");
-                model.addObject("user", loginBean);
                 request.setAttribute("message", "Invalid credentials!!");
+                return "redirect:/";
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return model;
+        return "redirect:/";
     }
 }

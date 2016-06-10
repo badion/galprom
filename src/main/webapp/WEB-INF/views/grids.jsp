@@ -15,6 +15,12 @@
   	 	<jsp:include page="../parts/footer.jsp"/>
     </jsp:attribute>
     <jsp:body>
+        <style>
+            .modal {
+                position: absolute;
+                z-index: 1;
+            }
+        </style>
         <div class="container">
             <h1>Види сіток</h1>
             <c:forEach var="subCategory" items="${gridPage.keySet()}">
@@ -41,25 +47,52 @@
                                 <td>${grid.roll_length}</td>
                                 <td>${grid.roll_width}</td>
                                 <td>${grid.price}</td>
-
-                                <td><a href="/product/${grid.id}/send_mail"
-                                       class="secondary-content"><i class="material-icons">send_mail</i></a></td>
-
+                                <td>
+                                    <button onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
+                                        send_mail
+                                    </button>
+                                </td>
                                 <td><a href="/categories/grid/${grid.id}/edit"
                                        class="secondary-content"><i class="material-icons">edit</i></a></td>
-
                                 <td><a type="submit" href="/categories/grid/${grid.id}/delete">delete</a></td>
 
+                            </tr>
+                            <tr class="mailForm${grid.id}" style="display: none">
+                                <td colspan="9">
+                                    <div class="modal-content">
+                                        <h4>Надіслати відгук</h4>
+                                        <form:form method="POST" action="/categories/grid/${grid.id}/send_mail">
+                                            <table>
+                                                <tr>
+                                                    <td><label>Імя : </label></td>
+                                                    <td><input type="text" name="name"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label>Телефон : </label></td>
+                                                    <td><input type="text" name="tel"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label>Мейл : </label></td>
+                                                    <td><input type="email" name="email"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label>Повідомлення : </label></td>
+                                                    <td><textarea name="comment"></textarea></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label><input type="submit" value="Відправити"></label></td>
+                                                </tr>
+                                            </table>
+                                        </form:form>
+                                    </div>
+                                </td>
                             </tr>
                             </tbody>
                         </c:forEach>
                     </table>
-                    <a href="<c:url value='/categories/newGrid' />">Додати нову позицію</a>
+                    <a href="<c:url value='/categories/newGrid/${subCategory.id}' />">Додати нову позицію</a>
                 </div>
             </c:forEach>
-        </div>
-        <div class="modal-footer">
-
         </div>
     </jsp:body>
 </t:genericpage>

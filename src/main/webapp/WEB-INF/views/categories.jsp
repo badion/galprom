@@ -46,8 +46,7 @@
                                             height: 200px;"
                                      src="<c:url value="/static/images/${categ.imgFN}" />" alt="">
                                 <h2>${categ.subtitle}</h2>
-
-                                <button type="button" class="btn btn-default"> <a href="categories/${categ.link}">${categ.name}</a></button>
+                               <a class="btn btn-default" href="categories/${categ.link}">${categ.name}</a>
                             </div>
                         </div>
                     </div>
