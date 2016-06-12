@@ -44,14 +44,17 @@
                                 <td>${grid.roll_length}</td>
                                 <td>${grid.price}</td>
                                 <td>
-                                    <button class="btn-info" onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
-                                       Купити
+                                    <button class="btn-info"
+                                            onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
+                                        Купити
                                     </button>
                                 </td>
-                                <td><a href="/galprom/categories/grid/${grid.id}/edit"
-                                       class="btn-primary"><i class="material-icons">Модифікувати</i></a></td>
-                                <td><a class="btn-danger" type="submit" href="/galprom/categories/grid/${grid.id}/delete">Видалити</a></td>
-
+                                <c:if test="${pageContext.request.userPrincipal.name == 'a'}">
+                                    <td><a href="/galprom/categories/grid/${grid.id}/edit"
+                                           class="btn-primary"><i class="material-icons">Модифікувати</i></a></td>
+                                    <td><a class="btn-danger" type="submit"
+                                           href="/galprom/categories/grid/${grid.id}/delete">Видалити</a></td>
+                                </c:if>
                             </tr>
                             <tr class="mailForm${grid.id}" style="display: none">
                                 <td colspan="9">
@@ -76,8 +79,10 @@
                                                     <td><textarea name="comment"></textarea></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><label><input type="submit" class="btn-info" value="Відправити"></label></td>
-                                                    <td><label><input onclick="" class="btn-info" value="Закрити"></label></td>
+                                                    <td><label><input type="submit" class="btn-info" value="Відправити"></label>
+                                                    </td>
+                                                    <td><label><input onclick="" class="btn-info"
+                                                                      value="Закрити"></label></td>
                                                 </tr>
                                             </table>
                                         </form:form>

@@ -25,6 +25,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -50,7 +51,6 @@ public class GridController {
 
     @Autowired
     private GridServiceImpl gridService;
-
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
