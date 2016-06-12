@@ -96,7 +96,7 @@ public class GridController {
     @RequestMapping(value = "/categories/grid/{id}/delete", method = RequestMethod.GET)
     public String deleteGrid(@PathVariable("id") Long id) {
         gridRepository.delete(gridRepository.findOne(id));
-        return "redirect:/galprom/categories/grid";
+        return "redirect:/categories/grid";
     }
 
     @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.GET)
@@ -113,7 +113,7 @@ public class GridController {
         grid.setSubcategory(oldGrid.getSubcategory());
         grid.setFromClass(oldGrid.getFromClass());
         gridRepository.save(grid);
-        return "redirect:/galprom/categories/grid";
+        return "redirect:/categories/grid";
     }
 
     @RequestMapping(value = "/categories/grid/{id}/send_mail", method = RequestMethod.POST)
@@ -128,6 +128,6 @@ public class GridController {
         String itemUrl = product.toString();
         String subject = product.getName();
         new MailSender().makeSender(user, comment, itemUrl, subject);
-        return "redirect:/galprom/categories/grid";
+        return "redirect:/categories/grid";
     }
 }

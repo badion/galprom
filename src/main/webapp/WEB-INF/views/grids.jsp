@@ -30,8 +30,8 @@
                     <table class="table table-condensed">
                         <thead>
                         <tr>
-                            <th>Висота решітки</th>
-                            <th>Щирина решітки</th>
+                            <th>Висота ячейки</th>
+                            <th>Ширина ячейки</th>
                             <th>Діаметр</th>
                             <th>Довжина рулону</th>
                             <th>Ширина рулону</th>
@@ -52,9 +52,9 @@
                                         send_mail
                                     </button>
                                 </td>
-                                <td><a href="/categories/grid/${grid.id}/edit"
+                                <td><a href="/galprom/categories/grid/${grid.id}/edit"
                                        class="secondary-content"><i class="material-icons">edit</i></a></td>
-                                <td><a type="submit" href="/categories/grid/${grid.id}/delete">delete</a></td>
+                                <td><a type="submit" href="/galprom/categories/grid/${grid.id}/delete">delete</a></td>
 
                             </tr>
                             <tr class="mailForm${grid.id}" style="display: none">
