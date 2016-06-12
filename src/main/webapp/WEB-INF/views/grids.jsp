@@ -30,7 +30,7 @@
                     <table class="table table-condensed">
                         <thead>
                         <tr>
-                            <th>Ширина ячейки</th>
+                            <th>Ячейки</th>
                             <th>Діаметр</th>
                             <th>Довжина\Висота рулону</th>
                             <th>Ціна</th>
@@ -39,7 +39,7 @@
                         <c:forEach var="grid" items="${subCategory.products}">
                             <tbody>
                             <tr>
-                                <td>${grid.cell_w}</td>
+                                <td>${grid.cell_w}x${grid.cell_h}</td>
                                 <td>${grid.diametr}</td>
                                 <td>${grid.roll_length}</td>
                                 <td>${grid.price}</td>
@@ -57,7 +57,7 @@
                                 <td colspan="9">
                                     <div class="modal-content">
                                         <h4>Надіслати відгук</h4>
-                                        <form:form method="POST" action="/categories/grid/${grid.id}/send_mail">
+                                        <form:form method="POST" action="/galprom/categories/grid/${grid.id}/send_mail">
                                             <table>
                                                 <tr>
                                                     <td><label>Імя : </label></td>
