@@ -2,8 +2,8 @@ package com.galprom.controller;
 
 import com.galprom.mail.MailSender;
 import com.galprom.mail.User;
-import com.galprom.model.Grid;
-import com.galprom.model.Product;
+import com.galprom.model.product.Grid;
+import com.galprom.model.product.Product;
 import com.galprom.model.SubCategory;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.GridRepository;
@@ -11,6 +11,7 @@ import com.galprom.repository.ProductRepository;
 import com.galprom.repository.SubCategoryRepository;
 import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,6 +34,8 @@ import java.util.stream.Collectors;
 
 @Controller
 public class GridController {
+
+    private static final Logger LOGGER = Logger.getLogger(GridController.class);
 
     @Autowired
     private GridRepository gridRepository;

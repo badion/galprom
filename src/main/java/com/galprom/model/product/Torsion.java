@@ -1,4 +1,4 @@
-package com.galprom.model;
+package com.galprom.model.product;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;

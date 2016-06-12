@@ -1,6 +1,6 @@
 package com.galprom.validator;
 
-import com.galprom.model.Grid;
+import com.galprom.model.product.Grid;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
