@@ -28,8 +28,6 @@
                 </form>
             </c:if>
         </ul>
-
-
     </div>
 
 </div>

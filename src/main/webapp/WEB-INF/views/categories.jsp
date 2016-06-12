@@ -16,14 +16,11 @@
         <div class="clearing"></div>
         <div class="header">
             <div class="logo">
-                <h1 style="margin-top: 42px;">ГАЛПРОМ<span>ГАРАНТ</span></h1>
+                <h1 style="margin-top: -144px;">ГАЛПРОМ<span>ГАРАНТ</span></h1>
             </div>
             <div class="social">
                 <ul>
-                    <li><a href="#"><img src="<c:url value="/static/images/aim.png" />" alt="">
                     <li><a href="#"><img src="<c:url value="/static/images/facebook.png" />" alt="">
-                    <li><a href="#"><img src="<c:url value="/static/images/twwtter.png" />" alt="">
-                    <li><a href="#"><img src="<c:url value="/static/images/linkedin.png" />" alt="">
                 </ul>
             </div>
         </div>
@@ -46,9 +43,8 @@
                                                class="form-control"
                                                type="file" name="file" onchange="this.form.submit()">
                                     </form>
-
-                                <img style="width: 250px;height: 200px;"
-                                     src="<c:url value='/categories/img/${category.id}' />" alt="">
+                                <a href="<c:url value='/categories/img/${category.id}' />"><img style="width: 250px;height: 200px;"
+                                     src="<c:url value='/categories/img/${category.id}' />" alt=""></a>
                                 <h2>${category.subtitle}</h2>
                                 <a class="btn btn-default"
                                    href="<c:url value='/categories/${category.link}' />">${category.name}</a>
@@ -58,19 +54,6 @@
                 </c:forEach>
             </div>
             <div class="side-bar">
-                <div class="search" style="margin-top: 30px;">
-                    <div class="title">
-                        <h1>Пошук</h1>
-                    </div>
-                    <ul>
-                        <li>
-                            <input name="" type="text" class="textfiled"/>
-                        </li>
-                        <li>
-                            <img src="<c:url value="/static/images/search-icon.jpg" />" alt="search">
-                        </li>
-                    </ul>
-                </div>
                 <div class="panel">
                     <div class="title"><span>
                  <img src="<c:url value="/static/images/icon1.jpg" />" alt="icon">
