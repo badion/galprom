@@ -33,18 +33,22 @@
                                 <div class="title">
                                     <h1>${category.name}</h1>
                                 </div>
-                                    <form method="POST" action="<c:url value='/categories/img/upload/${category.id}?${_csrf.parameterName}=${_csrf.token}' />"
-                                          name="imgUploadForm${category.id}"
-                                          enctype="multipart/form-data">
+                                <form method="POST"
+                                      action="<c:url value='/categories/img/upload/${category.id}?${_csrf.parameterName}=${_csrf.token}' />"
+                                      name="imgUploadForm${category.id}"
+                                      enctype="multipart/form-data">
+                                    <c:if test="${pageContext.request.userPrincipal.name != null}">
                                         <label for="files${category.id}">
-                                            <span class="btn">Select Image (max size 2 MB)</span>
+                                            <span class="btn btn-success">Виберіть зображення</span>
                                         </label>
-                                        <input style="visibility: hidden; position: absolute;" id="files${category.id}"
-                                               class="form-control"
-                                               type="file" name="file" onchange="this.form.submit()">
-                                    </form>
-                                <a href="<c:url value='/categories/img/${category.id}' />"><img style="width: 250px;height: 200px;"
-                                     src="<c:url value='/categories/img/${category.id}' />" alt=""></a>
+                                    </c:if>
+                                    <input style="visibility: hidden; position: absolute;" id="files${category.id}"
+                                           class="form-control"
+                                           type="file" name="file" onchange="this.form.submit()">
+                                </form>
+                                <a href="<c:url value='/categories/img/${category.id}' />"><img
+                                        style="width: 250px;height: 200px;"
+                                        src="<c:url value='/categories/img/${category.id}' />" alt=""></a>
                                 <h2>${category.subtitle}</h2>
                                 <a class="btn btn-default"
                                    href="<c:url value='/categories/${category.link}' />">${category.name}</a>

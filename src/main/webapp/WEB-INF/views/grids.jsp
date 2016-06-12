@@ -44,15 +44,15 @@
                                 <td>${grid.roll_length}</td>
                                 <td>${grid.price}</td>
                                 <td>
-                                    <button class="btn-info"
+                                    <button class="btn btn-info"
                                             onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
                                         Купити
                                     </button>
                                 </td>
                                 <c:if test="${pageContext.request.userPrincipal.name == 'a'}">
                                     <td><a href="/galprom/categories/grid/${grid.id}/edit"
-                                           class="btn-primary"><i class="material-icons">Модифікувати</i></a></td>
-                                    <td><a class="btn-danger" type="submit"
+                                           class="btn btn-danger"><i class="material-icons">Модифікувати</i></a></td>
+                                    <td><a class="btn btn-danger" type="submit"
                                            href="/galprom/categories/grid/${grid.id}/delete">Видалити</a></td>
                                 </c:if>
                             </tr>
