@@ -1,5 +1,6 @@
-package com.galprom.model;
+package com.galprom.model.product;
 
+import com.galprom.model.SubCategory;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;

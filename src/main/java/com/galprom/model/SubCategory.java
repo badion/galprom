@@ -1,9 +1,8 @@
 package com.galprom.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.galprom.model.product.Product;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity

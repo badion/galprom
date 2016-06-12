@@ -22,11 +22,23 @@ public class Category implements Serializable {
     @Column(name = "imgFN")
     private String imgFN;
 
+    @Lob
+    @Column(name="image", nullable=false, columnDefinition="longblob")
+    private byte[] image;
+
     @Column(name = "link")
     private String link;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<SubCategory> subCategories;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public String getLink() {
         return link;

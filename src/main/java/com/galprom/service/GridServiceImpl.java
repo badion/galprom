@@ -1,6 +1,6 @@
 package com.galprom.service;
 
-import com.galprom.model.Grid;
+import com.galprom.model.product.Grid;
 import com.galprom.repository.GridRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

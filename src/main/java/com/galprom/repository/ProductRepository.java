@@ -1,9 +1,7 @@
 package com.galprom.repository;
 
-import com.galprom.model.Grid;
-import com.galprom.model.Product;
+import com.galprom.model.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
