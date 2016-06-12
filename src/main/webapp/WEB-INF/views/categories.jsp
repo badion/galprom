@@ -20,7 +20,7 @@
             </div>
             <div class="social">
                 <ul>
-                    <li><a href="#"><img src="<c:url value="/static/images/facebook.png" />" alt="">
+                    <li><a href="#"><img src="<c:url value="/static/images/facebook.png" />" alt=""/></a></li>
                 </ul>
             </div>
         </div>
