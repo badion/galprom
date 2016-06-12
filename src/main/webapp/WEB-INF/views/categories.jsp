@@ -36,17 +36,16 @@
                                 <div class="title">
                                     <h1>${category.name}</h1>
                                 </div>
-
-                                <form method="POST" action="<c:url value='/categories/img/upload/${category.id}' />"
-                                      name="imgUploadForm${category.id}"
-                                      enctype="multipart/form-data">
-                                    <label for="files${category.id}">
-                                        <span class="btn">Select Image (max size 2 MB)</span>
-                                    </label>
-                                    <input style="visibility: hidden; position: absolute;" id="files${category.id}"
-                                           class="form-control"
-                                           type="file" name="file" onchange="this.form.submit()">
-                                </form>
+                                    <form method="POST" action="<c:url value='/categories/img/upload/${category.id}?${_csrf.parameterName}=${_csrf.token}' />"
+                                          name="imgUploadForm${category.id}"
+                                          enctype="multipart/form-data">
+                                        <label for="files${category.id}">
+                                            <span class="btn">Select Image (max size 2 MB)</span>
+                                        </label>
+                                        <input style="visibility: hidden; position: absolute;" id="files${category.id}"
+                                               class="form-control"
+                                               type="file" name="file" onchange="this.form.submit()">
+                                    </form>
 
                                 <img style="width: 250px;height: 200px;"
                                      src="<c:url value='/categories/img/${category.id}' />" alt="">

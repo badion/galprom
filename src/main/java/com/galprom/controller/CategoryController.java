@@ -64,7 +64,7 @@ public class CategoryController {
         return response;
     }
 
-    @RequestMapping(value = "categories/img/upload/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/categories/img/upload/{id}", method = RequestMethod.POST)
     public String uploadImageHandler(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) throws IOException {
         LOGGER.info("START uploadImageHandler(" + id + ")");
         Category category = categoryRepository.getOne(id);
@@ -77,5 +77,4 @@ public class CategoryController {
         LOGGER.info("END uploadImageHandler(" + id + ")");
         return "redirect:/";
     }
-
 }
