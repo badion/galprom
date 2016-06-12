@@ -46,12 +46,12 @@ MENU CLASSES
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
-.header{margin:0 auto; width:960px; height:120px;}
+.header{margin:0 auto; width:960px; height:0px;}
 .logo{width:300px; float:left; line-height:120px;}
 .logo h1{ font-size:32px; color:#d13f31; font-weight:normal;}
-.logo h1 span{ color:#1a202c;}
+.logo h1 span{ color:white;}
 
-.social{ float:right; margin-top:45px;}
+.social{ float:right; margin-top:-58px; margin-right: 39px;}
 .social ul li{list-style:none; float:left; margin-left:15px;}
 
 /*-------------------------------------------------
@@ -80,7 +80,7 @@ MAIN COLUMAS CLASSES
 /*-------------------------------------------------
 SIDE BAR CLASSES
 -------------------------------------------------*/
-.side-bar{ width:280px; overflow:hidden; float:left;}
+.side-bar{ width:280px; overflow:hidden; margin-top: 31px; float:left;}
 .search{background:#d13f31; padding:25px 20px 25px 20px; overflow:hidden;}
 .search .title h1{ color:#fff; padding-bottom:20px;}
 .search ul li{list-style:none; float:left; list-style:none;}
