@@ -28,10 +28,10 @@
             </div>
         </div>
         <!--------header wrap ends--------->
-        <div class="banner">
-            <h1>Macenas Conte hendrit </h1>
-            <h2>lorem quis orcitor</h2>
-        </div>
+        <%--<div class="banner">--%>
+            <%--<h1>Macenas Conte hendrit </h1>--%>
+            <%--<h2>lorem quis orcitor</h2>--%>
+        <%--</div>--%>
         <div class="page">
         <div class="primary-col">
             <c:forEach var="categ" items="${category}" varStatus="myIndex">

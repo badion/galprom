@@ -30,31 +30,27 @@
                     <table class="table table-condensed">
                         <thead>
                         <tr>
-                            <th>Висота решітки</th>
-                            <th>Щирина решітки</th>
+                            <th>Ширина ячейки</th>
                             <th>Діаметр</th>
-                            <th>Довжина рулону</th>
-                            <th>Ширина рулону</th>
+                            <th>Довжина\Висота рулону</th>
                             <th>Ціна</th>
                         </tr>
                         </thead>
                         <c:forEach var="grid" items="${subCategory.products}">
                             <tbody>
                             <tr>
-                                <td>${grid.cell_h}</td>
                                 <td>${grid.cell_w}</td>
                                 <td>${grid.diametr}</td>
                                 <td>${grid.roll_length}</td>
-                                <td>${grid.roll_width}</td>
                                 <td>${grid.price}</td>
                                 <td>
-                                    <button onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
-                                        send_mail
+                                    <button class="btn-info" onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='';">
+                                       Купити
                                     </button>
                                 </td>
-                                <td><a href="/categories/grid/${grid.id}/edit"
-                                       class="secondary-content"><i class="material-icons">edit</i></a></td>
-                                <td><a type="submit" href="/categories/grid/${grid.id}/delete">delete</a></td>
+                                <td><a href="/galprom/categories/grid/${grid.id}/edit"
+                                       class="btn-primary"><i class="material-icons">Модифікувати</i></a></td>
+                                <td><a class="btn-danger" type="submit" href="/galprom/categories/grid/${grid.id}/delete">Видалити</a></td>
 
                             </tr>
                             <tr class="mailForm${grid.id}" style="display: none">
@@ -80,7 +76,8 @@
                                                     <td><textarea name="comment"></textarea></td>
                                                 </tr>
                                                 <tr>
-                                                    <td><label><input type="submit" value="Відправити"></label></td>
+                                                    <td><label><input type="submit" class="btn-info" value="Відправити"></label></td>
+                                                    <td><label><input onclick="" class="btn-info" value="Закрити"></label></td>
                                                 </tr>
                                             </table>
                                         </form:form>
