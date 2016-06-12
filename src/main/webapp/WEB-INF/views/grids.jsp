@@ -58,35 +58,32 @@
                             </tr>
                             <tr class="mailForm${grid.id}" style="display: none">
                                 <td colspan="9">
-                                    <div class="modal-content">
-                                        <h4>Надіслати відгук</h4>
-                                        <form:form method="POST" action="/galprom/categories/grid/${grid.id}/send_mail">
-                                            <table>
-                                                <tr>
-                                                    <td><label>Імя : </label></td>
-                                                    <td><input type="text" name="name"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label>Телефон : </label></td>
-                                                    <td><input type="text" name="tel"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label>Мейл : </label></td>
-                                                    <td><input type="email" name="email"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label>Повідомлення : </label></td>
-                                                    <td><textarea name="comment"></textarea></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label><input type="submit" class="btn-info" value="Відправити"></label>
-                                                    </td>
-                                                    <td><label><input onclick="" class="btn-info"
-                                                                      value="Закрити"></label></td>
-                                                </tr>
-                                            </table>
-                                        </form:form>
-                                    </div>
+                                    <h4>Надіслати відгук</h4>
+                                    <form:form method="POST" action="/galprom/categories/grid/${grid.id}/send_mail">
+                                        <table>
+                                            <tr>
+                                                <td><label>Імя : </label></td>
+                                                <td><input type="text" name="name"></td>
+                                                <td><label>Телефон : </label></td>
+                                                <td><input type="text" name="tel"></td>
+                                                <td><label>Мейл : </label></td>
+                                                <td><input type="email" name="email"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6"><label>Повідомлення : </label></td>
+                                            </tr>
+                                            <td colspan="6"><textarea name="comment"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><input type="submit" class="btn-info"
+                                                                       value="Відправити"></td>
+                                                <td colspan="2"><input
+                                                        onclick="document.getElementsByClassName('mailForm${grid.id}')[0].style.display='none';"
+                                                        class="btn-info"
+                                                        value="Закрити"></td>
+                                            </tr>
+                                        </table>
+                                    </form:form>
                                 </td>
                             </tr>
                             </tbody>

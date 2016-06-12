@@ -12,13 +12,9 @@ public class SubCategory implements Comparable<SubCategory> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
-    //
-//    @NotNull
-//    @NotEmpty(message = "Поле має бути не пустим")
+
     private String name;
 
-    //    @NotNull
-//    @NotEmpty(message = "Поле має бути не пустим")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,6 +23,10 @@ public class SubCategory implements Comparable<SubCategory> {
 
     @Column(name = "imgFN")
     private String imgFN;
+
+    @Lob
+    @Column(name="image", nullable=false, columnDefinition="longblob")
+    private byte[] image;
 
     @OneToMany(mappedBy = "subcategory", fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Product> products;

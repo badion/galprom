@@ -12,8 +12,9 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value="Tools")
 public class Tools extends Product{
 
-      @Column(name = "type")
+    @Column(name = "type")
     private String type;
+
 
     @Override
     public String toString() {

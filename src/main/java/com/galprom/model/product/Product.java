@@ -25,6 +25,10 @@ public abstract class Product {
     @JoinColumn(name = "subcategory")
     private SubCategory subcategory;
 
+    @Lob
+    @Column(name="image", nullable=false, columnDefinition="longblob")
+    private byte[] image;
+
     public SubCategory getSubcategory() {
         return subcategory;
     }

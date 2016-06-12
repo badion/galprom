@@ -13,20 +13,18 @@ import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -80,17 +78,12 @@ public class GridController {
     }
 
     @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.POST)
-    public String newGridAction(@Valid Grid grid, BindingResult result, ModelMap model, @PathVariable("idSub") Long idSub) {
+    public String newGridAction(@Valid Grid grid, ModelMap model, @PathVariable("idSub") Long idSub) {
         SubCategory subCategory = subCategoryRepository.findOne(idSub);
         System.out.println(subCategory.getProducts());
         grid.setFromClass("Grid");
         grid.setSubcategory(subCategory);
         subCategory.getProducts().add(grid);
-//        gridValidator.validate(grid, result);
-//        if (result.hasErrors()) {
-//            return "grid_new";
-//        }
-
         subCategoryRepository.save(subCategory);
         model.addAttribute("success", "Сітка " + grid.getName() + " " + " додана успішно");
         return "grid_new_succesful";
@@ -111,7 +104,7 @@ public class GridController {
     }
 
     @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.POST)
-    public String editGridAction(@Valid Grid grid, BindingResult result, ModelMap model) {
+    public String editGridAction(@Valid Grid grid) {
         Product oldGrid = productRepository.getOne(grid.getId());
         grid.setSubcategory(oldGrid.getSubcategory());
         grid.setFromClass(oldGrid.getFromClass());
@@ -120,17 +113,17 @@ public class GridController {
     }
 
     @RequestMapping(value = "/categories/grid/{id}/send_mail", method = RequestMethod.POST)
-    public String sendMailAction(@PathVariable("id") Long id,
-                                 @RequestParam("name") String name,
-                                 @RequestParam("tel") String tel,
-                                 @RequestParam("comment") String comment,
-                                 @RequestParam("email") String email
+    @ResponseStatus(value = HttpStatus.OK)
+    public void sendMailAction(@PathVariable("id") Long id,
+                               @RequestParam("name") String name,
+                               @RequestParam("tel") String tel,
+                               @RequestParam("comment") String comment,
+                               @RequestParam("email") String email
     ) throws MessagingException, IOException, URISyntaxException {
         Product product = productRepository.getOne(id);
         User user = new User(name, tel, email);
         String itemUrl = product.toString();
         String subject = product.getName();
         new MailSender().makeSender(user, comment, itemUrl, subject);
-        return "redirect:/categories/grid";
     }
 }

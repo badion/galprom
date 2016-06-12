@@ -30,31 +30,30 @@
         <div class="page">
             <div class="primary-col">
                 <c:forEach var="category" items="${categoryList}" varStatus="myIndex">
-                    <c:if test="${myIndex.index < 2}">
-                        <div class="block float-left mar-top30">
-                            <div class=" panel">
-                                <div class="title">
-                                    <h1>${category.name}</h1>
-                                </div>
-                                    <form method="POST" action="<c:url value='/categories/img/upload/${category.id}?${_csrf.parameterName}=${_csrf.token}' />"
-                                          name="imgUploadForm${category.id}"
-                                          enctype="multipart/form-data">
-                                        <label for="files${category.id}">
-                                            <span class="btn">Select Image (max size 2 MB)</span>
-                                        </label>
-                                        <input style="visibility: hidden; position: absolute;" id="files${category.id}"
-                                               class="form-control"
-                                               type="file" name="file" onchange="this.form.submit()">
-                                    </form>
-
-                                <img style="width: 250px;height: 200px;"
-                                     src="<c:url value='/categories/img/${category.id}' />" alt="">
-                                <h2>${category.subtitle}</h2>
-                                <a class="btn btn-default"
-                                   href="<c:url value='/categories/${category.link}' />">${category.name}</a>
+                    <div class="block float-left mar-top30">
+                        <div class=" panel">
+                            <div class="title">
+                                <h1>${category.name}</h1>
                             </div>
+                            <form method="POST"
+                                  action="<c:url value='/categories/img/upload/${category.id}?${_csrf.parameterName}=${_csrf.token}' />"
+                                  name="imgUploadForm${category.id}"
+                                  enctype="multipart/form-data">
+                                <label for="files${category.id}">
+                                    <span class="btn">Select Image (max size 2 MB)</span>
+                                </label>
+                                <input style="visibility: hidden; position: absolute;" id="files${category.id}"
+                                       class="form-control"
+                                       type="file" name="file" onchange="this.form.submit()">
+                            </form>
+
+                            <img style="width: 250px;height: 200px;"
+                                 src="<c:url value='/categories/img/${category.id}' />" alt="">
+                            <h2>${category.subtitle}</h2>
+                            <a class="btn btn-default"
+                               href="<c:url value='/categories/${category.link}' />">${category.name}</a>
                         </div>
-                    </c:if>
+                    </div>
                 </c:forEach>
             </div>
             <div class="side-bar">
@@ -64,7 +63,9 @@
                     </div>
                     <ul>
                         <li>
-                            <input name="" type="text" class="textfiled"/>
+                            <label>
+                                <input name="" type="text" class="textfiled"/>
+                            </label>
                         </li>
                         <li>
                             <img src="<c:url value="/static/images/search-icon.jpg" />" alt="search">

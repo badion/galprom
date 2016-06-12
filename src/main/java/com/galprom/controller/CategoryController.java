@@ -2,8 +2,6 @@ package com.galprom.controller;
 
 import com.galprom.model.*;
 import com.galprom.repository.CategoryRepository;
-import com.galprom.repository.TorsionRepository;
-import com.galprom.service.GridServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +33,7 @@ public class CategoryController {
         return model;
     }
 
-    @RequestMapping(value = "categories/img/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/categories/img/{id}", method = RequestMethod.GET)
     public HttpServletResponse categoryImage(
             @PathVariable("id") Long id,
             HttpServletResponse response) throws IOException {
