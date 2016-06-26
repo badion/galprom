@@ -15,8 +15,9 @@
     <logout logout-success-url="/?logout" />
     <csrf />
     <access-denied-handler error-page="/error" />
-    <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
     <intercept-url pattern="/categories/newGrid/**" access="hasRole('ROLE_ADMIN')" />
+    <intercept-url pattern="/categories/grid/**/delete" access="hasRole('ROLE_ADMIN')" />
+    <intercept-url pattern="/categories/grid/**/edit" access="hasRole('ROLE_ADMIN')" />
     </http>
 
     <authentication-manager>
