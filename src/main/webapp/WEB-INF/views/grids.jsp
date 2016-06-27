@@ -50,17 +50,17 @@
                                     </button>
                                 </td>
                                 <c:if test="${pageContext.request.userPrincipal.name == 'a'}">
-                                    <td><a href="/galprom/categories/grid/${grid.id}/edit"
+                                    <td><a href="/categories/grid/${grid.id}/edit"
                                            class="btn btn-danger"><i class="material-icons">Модифікувати</i></a></td>
                                     <td><a class="btn btn-danger" type="submit"
-                                           href="/galprom/categories/grid/${grid.id}/delete">Видалити</a></td>
+                                           href="/categories/grid/${grid.id}/delete">Видалити</a></td>
                                 </c:if>
                             </tr>
                             <tr class="mailForm${grid.id}" style="display: none">
                                 <td colspan="9">
                                     <div class="modal-content">
                                         <h4>Надіслати відгук</h4>
-                                        <form:form method="POST" action="/galprom/categories/grid/${grid.id}/send_mail">
+                                        <form:form method="POST" action="/categories/grid/${grid.id}/send_mail">
                                             <table>
                                                 <tr>
                                                     <td><label>Імя : </label></td>
