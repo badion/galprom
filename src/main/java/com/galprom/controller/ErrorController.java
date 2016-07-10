@@ -24,4 +24,13 @@ public class ErrorController {
         model.setViewName("error");
         return model;
     }
+
+    @RequestMapping(value="/404")
+    public ModelAndView error404(){
+        ModelAndView m = new ModelAndView();
+        System.out.println("custom error handler");
+        m.setViewName("404");
+        return m;
+    }
+
 }

@@ -1,11 +1,13 @@
 package com.galprom.controller;
 
+import com.galprom.exceptions.PageNotFoundException;
 import com.galprom.model.*;
 import com.galprom.repository.CategoryRepository;
 import com.galprom.repository.TorsionRepository;
 import com.galprom.service.GridServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +29,7 @@ public class CategoryController {
 
     @Autowired
     private ServletContext servletContext;
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {
