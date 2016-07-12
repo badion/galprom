@@ -8,15 +8,15 @@
 <div class="menu-wrap">
     <div class="menu">
         <ul>
-            <li><a href="/galprom" class="active">Домашня </a></li>
-            <li><a href="/galprom/about">Про нас </a></li>
-            <li><a href="/galprom/categories">Категорії </a></li>
+            <li><a href="/" class="active">Домашня </a></li>
+            <li><a href="/about">Про нас </a></li>
+            <li><a href="/categories">Категорії </a></li>
             <c:if test="${loggedInUser == null}">
-                <li><a href="/galprom/login">Логін</a></li>
+                <li><a href="/login">Логін</a></li>
             </c:if>
             <c:if test="${loggedInUser != null}">
                 <li><a>${loggedInUser}</a></li>
-                <li><a href="/galprom/logout">Вийти</a></li>
+                <li><a href="/logout">Вийти</a></li>
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
                 <li><a>${pageContext.request.userPrincipal.name}</a></li>

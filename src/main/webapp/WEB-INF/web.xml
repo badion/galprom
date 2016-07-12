@@ -52,6 +52,12 @@
             classpath:galprom_datasource.xml
         </param-value>
     </context-param>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/404.jsp</location>
+    </error-page>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

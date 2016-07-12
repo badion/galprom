@@ -1,5 +1,6 @@
 package com.galprom.controller;
 
+import com.galprom.exceptions.PageNotFoundException;
 import com.galprom.mail.MailSender;
 import com.galprom.mail.User;
 import com.galprom.model.product.Grid;
@@ -13,6 +14,7 @@ import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -52,6 +54,7 @@ public class GridController {
 
     @Autowired
     private GridServiceImpl gridService;
+
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
