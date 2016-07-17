@@ -69,24 +69,11 @@ public class MailSender {
         LOGGER.info("Sent message successfully....");
     }
 
-    public static void main(String[] args) throws MessagingException, IOException, URISyntaxException {
-        User user = new User("misha", "+380677715633", "misha.mikus@gmail.com");
-        String text = "Хочу купити оцю поїбень..";
-        String itemUrl = "http://www.sex-toy.com.ua/products/Dildo_Real_Rapture_Brown_5_15x4_sm";
-        String subject = "Хуй";
-        new MailSender().sendMail(user, text, itemUrl, subject);
-
-    }
-
     public void makeSender(User user, String comment, String itemUrl, String subject) throws MessagingException, IOException, URISyntaxException {
         new Thread(() -> {
             try {
                 sendMail(user,comment,itemUrl,subject);
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (URISyntaxException e) {
+            } catch (MessagingException | IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         }).start();

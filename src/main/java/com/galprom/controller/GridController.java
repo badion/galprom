@@ -1,8 +1,8 @@
 package com.galprom.controller;
 
-import com.galprom.exceptions.PageNotFoundException;
 import com.galprom.mail.MailSender;
 import com.galprom.mail.User;
+import com.galprom.model.Category;
 import com.galprom.model.product.Grid;
 import com.galprom.model.product.Product;
 import com.galprom.model.SubCategory;
@@ -14,17 +14,18 @@ import com.galprom.service.GridServiceImpl;
 import com.galprom.validator.GridValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -33,9 +34,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 @Controller
-public class GridController {
-
-    private static final Logger LOGGER = Logger.getLogger(GridController.class);
+public class GridController extends BaseController{
 
     @Autowired
     private GridRepository gridRepository;
@@ -47,14 +46,7 @@ public class GridController {
     private SubCategoryRepository subCategoryRepository;
 
     @Autowired
-    private GridValidator gridValidator;
-
-    @Autowired
     private ProductRepository productRepository;
-
-    @Autowired
-    private GridServiceImpl gridService;
-
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
     public ModelAndView getAllGrids(ModelAndView model) {
@@ -67,7 +59,7 @@ public class GridController {
                                 .stream()
                                 .map(product -> (Grid) product)
                                 .collect(Collectors.toList())));
-        model.addObject("gridPage", gridPage).setViewName("grids");
+        model.addObject("gridPage", gridPage).setViewName("grid/grids");
         return model;
     }
 
@@ -77,7 +69,12 @@ public class GridController {
         grid.setSubcategory(subCategoryRepository.findOne(idSub));
         model.addAttribute("grid", grid);
         model.addAttribute("edit", false);
-        return "grid_new";
+        return "grid/grid_new";
+    }
+
+    @RequestMapping(value = {"/categories/newGridSubCategory"}, method = RequestMethod.POST)
+    public String newGridSubCategory(@Valid SubCategory subCategory, ModelMap model) {
+        return "grid/grid_new_sub_category_successful";
     }
 
     @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.POST)
@@ -89,7 +86,7 @@ public class GridController {
         subCategory.getProducts().add(grid);
         subCategoryRepository.save(subCategory);
         model.addAttribute("success", "Сітка " + grid.getName() + " " + " додана успішно");
-        return "grid_new_succesful";
+        return "grid/grid_new_successful";
     }
 
     @RequestMapping(value = "/categories/grid/{id}/delete", method = RequestMethod.GET)
@@ -103,7 +100,7 @@ public class GridController {
         Grid grid = gridRepository.findOne(id);
         model.addAttribute("grid", grid);
         model.addAttribute("edit", true);
-        return "grid_new";
+        return "grid/grid_new";
     }
 
     @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.POST)
@@ -116,17 +113,48 @@ public class GridController {
     }
 
     @RequestMapping(value = "/categories/grid/{id}/send_mail", method = RequestMethod.POST)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void sendMailAction(@PathVariable("id") Long id,
-                               @RequestParam("name") String name,
-                               @RequestParam("tel") String tel,
-                               @RequestParam("comment") String comment,
-                               @RequestParam("email") String email
+    public Object sendMailAction(@PathVariable("id") Long id,
+                                 @RequestParam("name") String name,
+                                 @RequestParam("tel") String tel,
+                                 @RequestParam("comment") String comment,
+                                 @RequestParam("email") String email
     ) throws MessagingException, IOException, URISyntaxException {
         Product product = productRepository.getOne(id);
         User user = new User(name, tel, email);
         String itemUrl = product.toString();
         String subject = product.getName();
         new MailSender().makeSender(user, comment, itemUrl, subject);
+        return "redirect:/categories/grid";
     }
+
+    @RequestMapping(value = "/categories/grid/img/{id}", method = RequestMethod.GET)
+    public HttpServletResponse gridCategoryImage(
+            @PathVariable("id") Long id,
+            HttpServletResponse response) throws IOException {
+        SubCategory subCategory = subCategoryRepository.findOne(id);
+        LOGGER.info("START gridCategoryImage(" + id + ")");
+        response.setContentType("image/jpg");
+        if (subCategory.getImage() != null) {
+            response.getOutputStream().write(subCategory.getImage());
+            response.getOutputStream().flush();
+            response.getOutputStream().close();
+        }
+        LOGGER.info("END gridCategoryImage(" + id + ")");
+        return response;
+    }
+
+    @RequestMapping(value = "/categories/grid/img/upload/{id}", method = RequestMethod.POST)
+    public String uploadGridSubCategoryImageHandler(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) throws IOException {
+        LOGGER.info("START uploadGridSubCategoryImageHandler(" + id + ")");
+        SubCategory subCategory = subCategoryRepository.getOne(id);
+        if (file.getSize() < MAX_IMG_SIZE) {
+            subCategory.setImage(file.getBytes());
+        } else {
+            LOGGER.warn("file size is to long : " + file.getSize() + " b\tmax : " + MAX_IMG_SIZE);
+        }
+        subCategoryRepository.save(subCategory);
+        LOGGER.info("END uploadGridSubCategoryImageHandler(" + id + ")");
+        return "redirect:/categories/grid";
+    }
+
 }

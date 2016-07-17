@@ -1,33 +1,20 @@
 package com.galprom.controller;
 
-import com.galprom.exceptions.PageNotFoundException;
 import com.galprom.model.*;
 import com.galprom.repository.CategoryRepository;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @Controller
-public class CategoryController {
-
-    private static final Logger LOGGER = Logger.getLogger(GridController.class);
-
-    private static final long MAX_IMG_SIZE = 1024 * 1024 * 2L;
+public class CategoryController extends BaseController{
 
     @Autowired
     private CategoryRepository categoryRepository;
-
-    @Autowired
-    private ServletContext servletContext;
-
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {

@@ -29,8 +29,7 @@
         </authentication-provider>
     </authentication-manager>
 
-    <beans:bean id="my403"
-                class="com.galprom.filter.AccessDenied">
+    <beans:bean id="my403" class="com.galprom.filter.AccessDenied">
         <beans:property name="errorPage" value="error" />
     </beans:bean>
 
