@@ -138,6 +138,7 @@ public class GridController extends BaseController{
             response.getOutputStream().write(subCategory.getImage());
             response.getOutputStream().flush();
             response.getOutputStream().close();
+
         }
         LOGGER.info("END gridCategoryImage(" + id + ")");
         return response;
