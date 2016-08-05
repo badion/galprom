@@ -18,24 +18,24 @@
         <div class="container">
             <h1>Види сіток</h1>
             <a href="<c:url value='/categories/newGridSubCategory' />">Додати новий вид сітки</a>
-            <c:forEach var="subCategory" items="${gridPage.keySet()}">
+            <c:forEach var="subCategoryEntry" items="${gridPageEntrySet}">
                 <div class="container">
-                    <h2> ${subCategory.name}:</h2>
-                    <h1>${subCategory.description}:</h1>
+                    <h2> ${subCategoryEntry.key.name}:</h2>
+                    <h1>${subCategoryEntry.key.description}:</h1>
                     <form method="POST"
-                          action="<c:url value='/categories/grid/img/upload/${subCategory.id}?${_csrf.parameterName}=${_csrf.token}' />"
-                          name="imgUploadForm${subCategory.id}"
+                          action="<c:url value='/categories/grid/img/upload/${subCategoryEntry.key.id}?${_csrf.parameterName}=${_csrf.token}' />"
+                          name="imgUploadForm${subCategoryEntry.key.id}"
                           enctype="multipart/form-data">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <label for="files${subCategory.id}">
+                            <label for="files${subCategoryEntry.key.id}">
                                 <span class="btn btn-success">Виберіть зображення</span>
                             </label>
                         </c:if>
-                        <input style="visibility: hidden; position: absolute;" id="files${subCategory.id}"
+                        <input style="visibility: hidden; position: absolute;" id="files${subCategoryEntry.key.id}"
                                class="form-control"
                                type="file" name="file" onchange="this.form.submit()">
                     </form>
-                    <img style="width: 250px;height: 200px;" src="<c:url value='/categories/grid/img/${subCategory.id}' />" alt="">
+                    <img style="width: 250px;height: 200px;" src="<c:url value='/categories/grid/img/${subCategoryEntry.key.id}' />" alt="">
                     <table class="table table-condensed">
                         <thead>
                         <tr>
@@ -45,7 +45,7 @@
                             <th>Ціна</th>
                         </tr>
                         </thead>
-                        <c:forEach var="grid" items="${subCategory.products}">
+                        <c:forEach var="grid" items="${subCategoryEntry.key.products}">
                             <tbody>
                             <tr>
                                 <td>${grid.cell_w}x${grid.cell_h}</td>

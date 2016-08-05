@@ -34,7 +34,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 @Controller
-public class GridController extends BaseController{
+public class GridController extends BaseController {
 
     @Autowired
     private GridRepository gridRepository;
@@ -59,7 +59,7 @@ public class GridController extends BaseController{
                                 .stream()
                                 .map(product -> (Grid) product)
                                 .collect(Collectors.toList())));
-        model.addObject("gridPage", gridPage).setViewName("grid/grids");
+        model.addObject("gridPageEntrySet", gridPage.entrySet()).setViewName("grid/grids");
         return model;
     }
 
