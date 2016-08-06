@@ -6,6 +6,18 @@
 	text-align: center
 }
 
+
+#mainlogin {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
+
+.block {
+
+height:	443px;
+}
+
 /*-------------------------------------------------
 GLOBALS CLASSES
 -------------------------------------------------*/

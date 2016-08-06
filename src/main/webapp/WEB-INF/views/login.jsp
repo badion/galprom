@@ -24,13 +24,13 @@
         <div class="container">
             <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <div id="mainlogin">
-                    <h1>Login with username or password 122</h1>
+                    <h1>Ведіть логін і пароль</h1>
                     <form name="loginForm" action="<c:url value='login' />" method="POST">
                         <input type="text" class="form-control" style="    width: 300px;" name="name"
-                               placeholder="username or email"
+                               placeholder="Логін"
                                value="" required> <input class="form-control" style="    width: 300px;" type="password"
                                                          name="password"
-                                                         placeholder="password" value="" required>
+                                                         placeholder="Пароль" value="" required>
                         <button style="    width: 300px;" class="btn btn-lg btn-primary btn-block" type="submit">
                             <i class="fa fa-arrow-right">Залогінитись</i>
                         </button>

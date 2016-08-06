@@ -14,7 +14,7 @@
             <li><a href="/about">Про нас </a></li>
             <li><a href="/categories">Категорії </a></li>
             <c:if test="${loggedInUser == null}">
-                <li><a href="/login">Логін sdf gsdf g</a></li>
+                <li><a href="/login">Логін</a></li>
             </c:if>
             <c:if test="${loggedInUser != null}">
                 <li><a>${loggedInUser}</a></li>

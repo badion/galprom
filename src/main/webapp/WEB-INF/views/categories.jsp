@@ -27,7 +27,7 @@
         <div class="page">
             <div class="primary-col">
                 <c:forEach var="category" items="${categoryList}" varStatus="myIndex">
-                    <c:if test="${myIndex.index < 2}">
+                    <%--<c:if test="${myIndex.index < 2}">--%>
                         <div class="block float-left mar-top30">
                             <div class=" panel">
                                 <div class="title">
@@ -54,7 +54,7 @@
                                    href="<c:url value='/categories/${category.link}' />">${category.name}</a>
                             </div>
                         </div>
-                    </c:if>
+                    <%--</c:if>--%>
                 </c:forEach>
             </div>
             <div class="side-bar">
