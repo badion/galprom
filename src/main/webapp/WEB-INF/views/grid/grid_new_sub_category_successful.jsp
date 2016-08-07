@@ -19,7 +19,7 @@
                     ${success}
             </div>
     <span class="well floatRight">
-        Перейти<a href="<c:url value='/categories/grid' />">Список сіток</a>
+        Перейти <a href="<c:url value='/categories/grid' />">Список сіток</a>
     </span>
         </div>
     </jsp:body>

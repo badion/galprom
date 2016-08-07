@@ -13,8 +13,10 @@ public class SubCategory implements Comparable<SubCategory> {
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
 
+    @Column(name = "name", columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
     private String name;
 
+    @Column(name = "description", columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)

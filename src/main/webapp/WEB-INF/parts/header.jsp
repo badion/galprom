@@ -13,17 +13,16 @@
             <li><a href="/" class="active">Домашня </a></li>
             <li><a href="/about">Про нас </a></li>
             <li><a href="/categories">Категорії </a></li>
-            <c:if test="${loggedInUser == null}">
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <li><a href="/login">Логін</a></li>
             </c:if>
             <c:if test="${loggedInUser != null}">
                 <li><a>${loggedInUser}</a></li>
-                <li><a href="/logout">Вийти</a></li>
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
                 <li><a>${pageContext.request.userPrincipal.name}</a></li>
                 <c:url value="/logout" var="logoutUrl"/>
-                <li><a href="javascript:formSubmit()"> Logout</a></li>
+                <li><a href="javascript:formSubmit()">Вийти</a></li>
                 <form action="${logoutUrl}" method="post" id="logoutForm">
                     <input type="hidden" name="${_csrf.parameterName}"
                            value="${_csrf.token}"/>

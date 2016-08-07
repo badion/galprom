@@ -22,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
@@ -72,15 +74,33 @@ public class GridController extends BaseController {
         return "grid/grid_new";
     }
 
+    @RequestMapping(value = {"/categories/newGridSubCategoryPage"}, method = RequestMethod.GET)
+    public String newGridSubCategoryGet() {
+        return "grid/grid_new_sub_category";
+    }
+
     @RequestMapping(value = {"/categories/newGridSubCategory"}, method = RequestMethod.POST)
-    public String newGridSubCategory(@Valid SubCategory subCategory, ModelMap model) {
+    public String newGridSubCategoryPost(@RequestParam("name") String name,
+                                         @RequestParam("description") String description,
+                                         @RequestParam("image") MultipartFile image,
+                                         ModelMap model) throws IOException {
+        SubCategory subCategory = new SubCategory();
+        subCategory.setCategory(categoryRepository.findBylink("grid"));
+        subCategory.setName(name);
+        subCategory.setDescription(description);
+        if (image.getSize() < MAX_IMG_SIZE) {
+            subCategory.setImage(image.getBytes());
+        } else {
+            LOGGER.warn("file size is to long : " + image.getSize() + " b\tmax : " + MAX_IMG_SIZE);
+        }
+        subCategoryRepository.save(subCategory);
+        model.addAttribute("success", "Вид сітки '" + subCategory.getName() + "' додано успішно");
         return "grid/grid_new_sub_category_successful";
     }
 
     @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.POST)
     public String newGridAction(@Valid Grid grid, ModelMap model, @PathVariable("idSub") Long idSub) {
         SubCategory subCategory = subCategoryRepository.findOne(idSub);
-        System.out.println(subCategory.getProducts());
         grid.setFromClass("Grid");
         grid.setSubcategory(subCategory);
         subCategory.getProducts().add(grid);
@@ -138,14 +158,16 @@ public class GridController extends BaseController {
             response.getOutputStream().write(subCategory.getImage());
             response.getOutputStream().flush();
             response.getOutputStream().close();
-
+            response.setStatus(200);
         }
+
         LOGGER.info("END gridCategoryImage(" + id + ")");
         return response;
     }
 
     @RequestMapping(value = "/categories/grid/img/upload/{id}", method = RequestMethod.POST)
-    public String uploadGridSubCategoryImageHandler(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) throws IOException {
+    public String uploadGridSubCategoryImageHandler(@RequestParam("file") MultipartFile file,
+                                                    @PathVariable("id") Long id) throws IOException {
         LOGGER.info("START uploadGridSubCategoryImageHandler(" + id + ")");
         SubCategory subCategory = subCategoryRepository.getOne(id);
         if (file.getSize() < MAX_IMG_SIZE) {
@@ -158,4 +180,9 @@ public class GridController extends BaseController {
         return "redirect:/categories/grid";
     }
 
+    @RequestMapping(value = "/categories/gridSubCategories/{id}/delete", method = RequestMethod.GET)
+    public String deleteGridSubCategory(@PathVariable("id") Long id) {
+        subCategoryRepository.delete(subCategoryRepository.findOne(id));
+        return "redirect:/categories/grid";
+    }
 }
