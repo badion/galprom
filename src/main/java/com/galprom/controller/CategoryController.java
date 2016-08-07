@@ -16,7 +16,7 @@ public class CategoryController extends BaseController{
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/categories"}, method = RequestMethod.GET)
     public ModelAndView getAllCategories(ModelAndView model) {
         model.addObject("categoryList", categoryRepository.findAll());
         model.setViewName("categories");

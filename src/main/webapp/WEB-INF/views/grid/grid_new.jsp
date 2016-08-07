@@ -7,6 +7,7 @@
            prefix="springForm" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <t:genericpage>
+
 	<jsp:attribute name="header">
 		<jsp:include page="../../parts/header.jsp"/>
     </jsp:attribute>
@@ -14,90 +15,142 @@
   	 	<jsp:include page="../../parts/footer.jsp"/>
     </jsp:attribute>
     <jsp:body>
+
+<script>
+    (function($,W,D)
+    {
+        var JQUERY4U = {};
+
+        JQUERY4U.UTIL =
+        {
+            setupFormValidation: function()
+            {
+                //form validation rules
+                $("#new_grid").validate({
+                    rules: {
+                        name: "required",
+                        cell_w: {
+                            number: true
+                        },
+                        cell_h: {
+                            number: true
+                        },
+                        roll_length: {
+                            number: true
+                        },
+                        roll_width: {
+                            number: true
+                        },
+                        diametr: {
+                            number: true
+                        },
+                        price: {
+                            number: true
+                        },
+                    },
+                    messages: {
+                        name: "Введіть назву",
+                        cell_w: "Поле може містити тільки цифри",
+                        cell_h: "Поле може містити тільки цифри",
+                        roll_length: "Поле може містити тільки цифри",
+                        roll_width: "Поле може містити тільки цифри",
+                        diametr: "Поле може містити тільки цифри",
+                        price: "Поле може містити тільки цифри",
+                    },
+                    submitHandler: function(form) {
+                        form.submit();
+                    }
+                });
+            }
+        }
+
+        //when the dom has loaded setup form validation rules
+        $(D).ready(function($) {
+            JQUERY4U.UTIL.setupFormValidation();
+        });
+
+    })(jQuery, window, document);
+
+</script>
+
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <div class="container">
-            <h4>Форма для додавання сітки</h4>
-            <div class="row">
-                <form:form method="POST" modelAttribute="grid" class="col s12">
-                    <form:input type="hidden" path="id" id="id"/>
-                    <form:input type="hidden" path="subcategory" id="subcategory"/>
-                    <!-- Назва -->
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">info</i>
-                            <form:input class="form-control validate" type="text" path="name" id="name"/>
-                            <label for="name">Назва</label>
-                            <div class="has-error">
-                                <form:errors path="name" class="help-inline"/>
-                            </div>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">swap_vert</i>
-                            <form:input class="form-control"  type="text" path="subcategory.name" id="subcategory"/>
-                            <label for="subcategory">subcategory</label>
+        <h4>Форма для додавання сітки</h4>
+        <div class="row">
+            <form:form id="new_grid" method="POST"  modelAttribute="grid" class="col s12">
+                <form:input type="hidden" path="id" id="id"/>
+                <form:input type="hidden" path="subcategory" id="subcategory"/>
+                <!-- Назва -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="name">Назва</label>
+                        <form:input class="form-control validate" type="text" path="name" name="name" id="name"/>
+                        <div class="has-error">
+                            <form:errors path="name" class="help-inline"/>
                         </div>
                     </div>
+                    <div class="input-field col s6">
+                        <label for="subcategory">Підкатегорія</label>
+                        <form:input disabled="true" class="form-control"  type="text"  path="subcategory.name" id="subcategory"/>
+                    </div>
+                </div>
 
-                    <!-- Ширина довжина ячейки -->
-                    <div class="row">
-                       <div class="input-field col s6">
-                            <i class="material-icons prefix">aspect_ratio</i>
-                            <form:input class="form-control validate" type="text" path="cell_w" id="cell_w"/>
-                            <label for="cell_w">Ширина ячейки</label>
-                            <div class="has-error">
-                                <form:errors path="cell_w" class="help-inline"/>
-                            </div>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">swap_vert</i>
-                            <form:input type="text" path="cell_h" id="cell_h" class="form-control validate"/>
-                            <label for="cell_h">Висота ячейки</label>
-                            <div class="has-error">
-                                <form:errors path="cell_h" class="help-inline"/>
-                            </div>
+                <!-- Ширина довжина ячейки -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="cell_w">Ширина ячейки</label>
+                        <form:input class="form-control validate" type="text" name="cell_w" path="cell_w" id="cell_w"/>
+                        <div class="has-error">
+                            <form:errors path="cell_w" class="help-inline"/>
                         </div>
                     </div>
+                    <div class="input-field col s6">
+                        <label for="cell_h">Висота ячейки</label>
+                        <form:input type="text" path="cell_h" id="cell_h" name="cell_h" class="form-control validate"/>
+                        <div class="has-error">
+                            <form:errors path="cell_h" class="help-inline"/>
+                        </div>
+                    </div>
+                </div>
 
-                    <!-- Довжина ширина рулону -->
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">swap_horiz</i>
-                            <form:input  type="text" path="roll_length" id="roll_length" class="form-control validate"/>
-                            <label for="roll_length">Довжина рулону</label>
-                            <div class="has-error">
-                                <form:errors path="roll_length" class="help-inline"/>
-                            </div>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">aspect_ratio</i>
-                            <form:input type="text" path="roll_width" id="roll_width" class="form-control validate"/>
-                            <label for="roll_width">Ширина рулону</label>
-                            <div class="has-error">
-                                <form:errors path="roll_width" class="help-inline"/>
-                            </div>
+                <!-- Довжина ширина рулону -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="roll_length">Довжина рулону</label>
+                        <form:input  type="text" path="roll_length" id="roll_length" name="roll_length" class="form-control validate"/>
+                        <div class="has-error">
+                            <form:errors path="roll_length" class="help-inline"/>
                         </div>
                     </div>
+                    <div class="input-field col s6">
+                        <label for="roll_width">Ширина рулону</label>
+                        <form:input type="text" path="roll_width" id="roll_width" name="roll_width" class="form-control validate"/>
+                        <div class="has-error">
+                            <form:errors path="roll_width" class="help-inline"/>
+                        </div>
+                    </div>
+                </div>
 
-                    <!-- Діаметр, ціна-->
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">account_circle</i>
-                            <form:input type="text" path="diametr" id="diametr"  class="form-control validate"/>
-                            <label for="diametr">Діаметр</label>
-                            <div class="has-error">
-                                <form:errors path="diametr" class="help-inline"/>
-                            </div>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">payment</i>
-                            <form:input type="text" path="price" id="price" class="form-control validate"/>
-                            <label for="price">Ціна</label>
-                            <div class="has-error">
-                                <form:errors path="price" class="help-inline"/>
-                            </div>
+                <!-- Діаметр, ціна-->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="diametr">Діаметр</label>
+                        <form:input type="text" path="diametr" id="diametr" name="diametr" class="form-control validate"/>
+                        <div class="has-error">
+                            <form:errors path="diametr" class="help-inline"/>
                         </div>
                     </div>
-                    <p>Поля з * обов'язкові</p>
-                    <div class="row">
+                    <div class="input-field col s6">
+                        <label for="price">Ціна</label>
+                        <form:input type="text" path="price" id="price" name="price" class="form-control validate"/>
+                        <div class="has-error">
+                            <form:errors path="price" class="help-inline"/>
+                        </div>
+                    </div>
+                </div>
+                <p>Поля з * обов'язкові</p>
+                <div class="row">
                     <div class="form-actions floatRight">
                         <c:choose>
                             <c:when test="${edit}">
@@ -112,6 +165,6 @@
                     </div>
                 </div>
             </form:form>
-         </div>
+        </div>
     </jsp:body>
 </t:genericpage>

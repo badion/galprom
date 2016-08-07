@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,6 +49,9 @@ public class GridController extends BaseController {
     private SubCategoryRepository subCategoryRepository;
 
     @Autowired
+    private GridValidator gridValidator;
+
+    @Autowired
     private ProductRepository productRepository;
 
     @RequestMapping(value = "/categories/grid", method = RequestMethod.GET)
@@ -63,15 +67,6 @@ public class GridController extends BaseController {
                                 .collect(Collectors.toList())));
         model.addObject("gridPageEntrySet", gridPage.entrySet()).setViewName("grid/grids");
         return model;
-    }
-
-    @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.GET)
-    public String newGrid(ModelMap model, @PathVariable("idSub") Long idSub) {
-        Product grid = new Grid();
-        grid.setSubcategory(subCategoryRepository.findOne(idSub));
-        model.addAttribute("grid", grid);
-        model.addAttribute("edit", false);
-        return "grid/grid_new";
     }
 
     @RequestMapping(value = {"/categories/newGridSubCategoryPage"}, method = RequestMethod.GET)
@@ -98,16 +93,28 @@ public class GridController extends BaseController {
         return "grid/grid_new_sub_category_successful";
     }
 
+    @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.GET)
+    public String newGrid(ModelMap model, @PathVariable("idSub") Long idSub) {
+        Product grid = new Grid();
+        grid.setSubcategory(subCategoryRepository.findOne(idSub));
+        model.addAttribute("grid", grid);
+        model.addAttribute("edit", false);
+        return "grid/grid_new";
+    }
+
     @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.POST)
-    public String newGridAction(@Valid Grid grid, ModelMap model, @PathVariable("idSub") Long idSub) {
+    public String newGridAction(@Valid Grid grid, BindingResult result, ModelMap model, @PathVariable("idSub") Long idSub) {
         SubCategory subCategory = subCategoryRepository.findOne(idSub);
+        System.out.println("fdsafdasfdas" + "id " + idSub +  subCategory.getProducts());
         grid.setFromClass("Grid");
+        productRepository.save(grid);
         grid.setSubcategory(subCategory);
         subCategory.getProducts().add(grid);
         subCategoryRepository.save(subCategory);
         model.addAttribute("success", "Сітка " + grid.getName() + " " + " додана успішно");
         return "grid/grid_new_successful";
     }
+
 
     @RequestMapping(value = "/categories/grid/{id}/delete", method = RequestMethod.GET)
     public String deleteGrid(@PathVariable("id") Long id) {
@@ -124,7 +131,7 @@ public class GridController extends BaseController {
     }
 
     @RequestMapping(value = "/categories/grid/{id}/edit", method = RequestMethod.POST)
-    public String editGridAction(@Valid Grid grid) {
+    public String editGridAction(@Valid Grid grid, BindingResult result) {
         Product oldGrid = productRepository.getOne(grid.getId());
         grid.setSubcategory(oldGrid.getSubcategory());
         grid.setFromClass(oldGrid.getFromClass());

@@ -17,8 +17,7 @@ public abstract class Product {
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
 
-    @NotNull
-    @NotEmpty(message = "Поле має бути не пустим")
+//    @NotEmpty(message = "Поле має бути не пустим")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -26,7 +25,7 @@ public abstract class Product {
     private SubCategory subcategory;
 
     @Lob
-    @Column(name="image", nullable=false, columnDefinition="longblob")
+    @Column(name="image", columnDefinition="longblob")
     private byte[] image;
 
     public SubCategory getSubcategory() {
