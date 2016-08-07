@@ -125,7 +125,7 @@
                                         </c:if>
                                         <c:if test="${pageContext.request.userPrincipal.name != null}">
                                             <a class="btn btn-success"
-                                               href="<c:url value='/categories/newGrid/${subCategory.id}' />">
+                                               href="<c:url value='/categories/newGrid/${subCategoryEntry.key.id}' />">
                                                 Додати нову позицію</a>
                                         </c:if>
                                     </td>
