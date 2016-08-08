@@ -1,10 +1,8 @@
 package com.galprom.model.product;
 
 import com.galprom.model.SubCategory;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="Product")
@@ -17,7 +15,7 @@ public abstract class Product {
     @Column(name = "id", columnDefinition = "bigint")
     private Long id;
 
-//    @NotEmpty(message = "Поле має бути не пустим")
+    @Column(name = "name", columnDefinition = "varchar(250) character set utf8 collate utf8_general_ci")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)

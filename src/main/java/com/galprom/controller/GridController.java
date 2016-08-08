@@ -105,8 +105,8 @@ public class GridController extends BaseController {
     @RequestMapping(value = {"/categories/newGrid/{idSub}"}, method = RequestMethod.POST)
     public String newGridAction(@Valid Grid grid, BindingResult result, ModelMap model, @PathVariable("idSub") Long idSub) {
         SubCategory subCategory = subCategoryRepository.findOne(idSub);
-        System.out.println("fdsafdasfdas" + "id " + idSub +  subCategory.getProducts());
         grid.setFromClass("Grid");
+        grid.setName("");
         productRepository.save(grid);
         grid.setSubcategory(subCategory);
         subCategory.getProducts().add(grid);

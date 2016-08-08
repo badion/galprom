@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Home on 12.06.2016.
- */
 public class AccessDenied implements AccessDeniedHandler {
     private String errorPage;
 

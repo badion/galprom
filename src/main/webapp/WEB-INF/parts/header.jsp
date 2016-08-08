@@ -10,11 +10,11 @@
 <div class="menu-wrap">
     <div class="menu">
         <ul>
-            <li><a href="/" class="active">Домашня </a></li>
-            <li><a href="/about">Про нас </a></li>
-            <li><a href="/categories">Категорії </a></li>
+            <li><a href="${pageContext.request.contextPath}/" class="active">Домашня</a></li>
+            <li><a href="${pageContext.request.contextPath}/about">Про нас</a></li>
+            <li><a href="${pageContext.request.contextPath}/categories">Категорії(домашня)</a></li>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
-                <li><a href="/login">Логін</a></li>
+                <li><a href="${pageContext.request.contextPath}/login">Логін</a></li>
             </c:if>
             <c:if test="${loggedInUser != null}">
                 <li><a>${loggedInUser}</a></li>

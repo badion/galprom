@@ -2,11 +2,6 @@ package com.galprom.model.product;
 
 import javax.persistence.*;
 
-/**
- * Created by MonsterX on 23.05.2016.
- */
-
-
 @Entity
 @DiscriminatorValue(value="Grid")
 public class Grid extends Product{

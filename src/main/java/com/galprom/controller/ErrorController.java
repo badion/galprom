@@ -7,9 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 
-/**
- * Created by Home on 12.06.2016.
- */
 @Controller
 public class ErrorController {
 

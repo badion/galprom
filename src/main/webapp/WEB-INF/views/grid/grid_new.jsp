@@ -28,7 +28,6 @@
                 //form validation rules
                 $("#new_grid").validate({
                     rules: {
-                        name: "required",
                         cell_w: {
                             number: true
                         },
@@ -49,7 +48,6 @@
                         },
                     },
                     messages: {
-                        name: "Введіть назву",
                         cell_w: "Поле може містити тільки цифри",
                         cell_h: "Поле може містити тільки цифри",
                         roll_length: "Поле може містити тільки цифри",
@@ -81,20 +79,6 @@
             <form:form id="new_grid" method="POST"  modelAttribute="grid" class="col s12">
                 <form:input type="hidden" path="id" id="id"/>
                 <form:input type="hidden" path="subcategory" id="subcategory"/>
-                <!-- Назва -->
-                <div class="row">
-                    <div class="input-field col s6">
-                        <label for="name">Назва</label>
-                        <form:input class="form-control validate" type="text" path="name" name="name" id="name"/>
-                        <div class="has-error">
-                            <form:errors path="name" class="help-inline"/>
-                        </div>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="subcategory">Підкатегорія</label>
-                        <form:input disabled="true" class="form-control"  type="text"  path="subcategory.name" id="subcategory"/>
-                    </div>
-                </div>
 
                 <!-- Ширина довжина ячейки -->
                 <div class="row">
@@ -149,7 +133,9 @@
                         </div>
                     </div>
                 </div>
+
                 <p>Поля з * обов'язкові</p>
+
                 <div class="row">
                     <div class="form-actions floatRight">
                         <c:choose>
