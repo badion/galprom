@@ -67,7 +67,7 @@
                                                         </td>
                                                         <c:if test="${pageContext.request.userPrincipal.name == 'a'}">
                                                             <td><a href="/categories/grid/${grid.id}/edit"
-                                                                   class="btn btn-danger"><i class="material-icons">Модифікувати</i></a>
+                                                                   class="btn btn-warning"><i class="material-icons">Модифікувати</i></a>
                                                             </td>
                                                             <td><a class="btn btn-danger" type="submit"
                                                                    href="/categories/grid/${grid.id}/delete">Видалити</a>
@@ -78,8 +78,7 @@
                                                         name="mailFormContainer">
                                                         <td colspan="9">
                                                             <h4>Надіслати відгук</h4>
-                                                            <form:form method="POST"
-                                                                       action="/categories/grid/${grid.id}/send_mail">
+                                                            <form:form method="POST" action="/categories/grid/${grid.id}/send_mail">
                                                                 <table>
                                                                     <tr>
                                                                         <td>Імя :<input type="text" name="name"

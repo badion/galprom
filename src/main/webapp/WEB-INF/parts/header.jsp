@@ -12,7 +12,7 @@
         <ul>
             <li><a href="${pageContext.request.contextPath}/" class="active">Домашня</a></li>
             <li><a href="${pageContext.request.contextPath}/about">Про нас</a></li>
-            <li><a href="${pageContext.request.contextPath}/categories">Категорії(домашня)</a></li>
+            <li><a href="${pageContext.request.contextPath}/categories">Категорії</a></li>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <li><a href="${pageContext.request.contextPath}/login">Логін</a></li>
             </c:if>

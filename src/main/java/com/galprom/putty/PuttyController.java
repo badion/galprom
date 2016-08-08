@@ -9,14 +9,14 @@ public class PuttyController {
 
     public static void main(String[] args) throws JSchException, IOException, SftpException {
         String warName = "galprom";
-        copyWARToRemoteHome();
-
+        String remoteHome = copyWARToRemoteHome();
+        String remoteTomcatWebAppDir = "/usr/share/tomcat7/webapps";
         execCommand(
                 "sudo service tomcat7 stop\n" +
-                        "cd /usr/share/tomcat7/webapps\n" +
+                        "cd " + remoteTomcatWebAppDir + "\n" +
                         "sudo rm -rf " + warName + "\n" +
                         "sudo rm -rf " + warName + ".war\n" +
-                        "sudo cp /home/ec2-user/" + warName + ".war /usr/share/tomcat7/webapps/" + warName + ".war\n" +
+                        "sudo cp " + remoteHome + "/" + warName + ".war " + remoteTomcatWebAppDir + "/" + warName + ".war\n" +
                         "sudo service tomcat7 start\n" +
                         "sudo service tomcat7 restart");
     }
@@ -68,7 +68,7 @@ public class PuttyController {
         return session;
     }
 
-    private static void copyWARToRemoteHome() throws SftpException, JSchException, IOException {
+    private static String copyWARToRemoteHome() throws SftpException, JSchException, IOException {
         Session session = getSession();
         Channel channel = session.openChannel("sftp");
         ChannelSftp channelSftp = (ChannelSftp) channel;
@@ -77,5 +77,6 @@ public class PuttyController {
         channelSftp.put(new FileInputStream(new File("target/galprom.war")), remoteHome + "/galprom.war");
         channelSftp.disconnect();
         session.disconnect();
+        return remoteHome;
     }
 }
